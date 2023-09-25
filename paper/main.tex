@@ -1571,9 +1571,9 @@ the generated code performs AST manipulation in Haskell, making it harder to rea
 
  Another approach is to have LLMs generate mutants for a given program. We experiment with prompting GPT-4 to generate mutants for a simple Haskell TODO management program.
  \cref{lst:haskellmutants} shows the mutants that GPT-4 generates for this program (formatted as before ==> after). Notice that some of the mutants generated make sense, and 
- resemble bugs a developer might make (replacing 0 with 1 or using the wrong data type). However, GPT-4 also generates a surprisingly high number of equivalent mutants, generating 
- (essentially) equivalent strings for all logging output. One is unlikely to generate tests that can kill these mutants, unless checking the exact string contents of all 
- logging messages.
+ resemble bugs a developer might make (replacing 0 with 1 or using the wrong data type). However, GPT-4 also generates equivalent mutants too, generating 
+ (essentially) equivalent strings for all output to console. One is unlikely to generate tests that can kill these mutants, unless checking the exact string contents of all 
+ logging messages. The error messages (potentially) could be checked, but the semantically equivalent meaning of these strings makes them poor mutants.
 
 While LLMs are not able to generate fully working language specific mutation testing tools from scratch, they are capable of generating many interesting rules
  that are specific to a given language. For example, prompting GPT-4 to generate Haskell rules generates the set of rules seen in \cref{lst:haskellcomby}. The generated rules are 
