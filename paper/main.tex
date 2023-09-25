@@ -470,7 +470,12 @@ The contributions of this paper are therefore:
        languages using only about 2,200 LOC of Python and less than 500
        lines for rules defining mutation operators over a dozen
        specific languages (and which can effectively mutate an
-       essentially unlimited number of other languages).
+       essentially unlimited number of other languages).  Our
+       approach, we emphasize, enables a smaller tool than any other tool
+       we examined (by over 1000 LOC) to support a rich set of
+       operators (the full set used by Google's internal mutation
+       tools, plus a large number of additional operators) for all languages covered by other tools, plus a set
+       of additional languages.
 
        \item A small case study showing that our approach produces
          useful results, even without the definition of
@@ -768,6 +773,8 @@ expressive power to enable regex-based mutation operators intermixed with
 context-free syntax
 properties\footnote{https://comby.dev/docs/basic-usage\#using-regular-expressions}.
 
+
+
 \section{Implementation}
 \label{sec:imp}
 
@@ -820,25 +827,52 @@ our project, and has been adopted by at least one flagship project
 its officially recommended mutation tool.  We omit details for
 purposes of blinding.
 
-\subsection{Incremental Mutation}
+\subsection{Supported Languages and Operators}
+
+Google has used its substantial resources to provide mutant generation for C++, Java,
+Python, Javascript, Go, Typescript, and Common
+Lisp~\cite{PetrovicMutationGoogle}, all of which we also support.  The
+operators Google uses for these
+languages (based on the original Mothra operators~\cite{offutt1996experimental}) are a subset of those provided by our implementation, with the caveat
+that block removal is only supported when using Comby;
+regular expression mutation is limited to single-line statement
+deletion.  For Lisp-like languages, the difficulty of identifying statements vs. value-returning
+function calls makes use of block deletion somewhat impractical.  The majority of the Google Mothra operators
+can be implemented as universal rules for all languages; only specializing
+logical operators and implementing block/statement deletion even requires
+language identification.  In addition to these core operators, we
+provide a number of additional operators for every language offered,
+and as shown below these produce a richer (in terms of operators used) set of mutants than most
+tools currently used.
+
+There is generally a one-to-one
+correspondence between Comby and Regexp rules in our implementation.
+The number of Comby rules (which is a small multiple of the number of
+``operators'' being defined ) for languages discussed below, at each hierarchical level in our
+implementation, is:  75 (universal), 33 (Python), 16 (C-like), 14
+(C++), 7 (Java), and 2 (Rust).
+
+The primary limitation of our tool is that it does not offer operators
+that require semantic knowledge of the program beyond the
+identification of roles offered by Comby.
+The only operator from the mutation testing literature that we are aware of that
+cannot be supported by our approach as a result, to our knowledge, is variable
+replacement.  However, we are aware of no widely-used tool or even recent
+study of mutation testing that makes use of this type of operator.
+
 
 One obvious concern with any-language source-based mutation is that every time the
 program changes, the cost of invalid mutants must be paid again.
 However, the locality of mutants and source changes in fact means this
-is seldom required.
-
-The {\tt git merge-file} utility takes a base file and two modified
-versions of that file, and produces an automatic merge, using the
-usual git merge resolution algorithm.    Because a mutant is a (very
-small) source change, this means that in practice updating a mutant to
-reflect even large changes to a source file is cost-free, and if the
+is seldom required.   Because a mutant is a (very
+small) source change,in practice updating a mutant to
+reflect even large changes to a source file is nearly cost-free, and if the
 original mutant was valid, the new mutant will usually also be valid.
 New mutant generation is only required for new lines of code and
-modified lines of code.  To the extent development is incremental,
-therefore, mutant generation can also be incremental.  Our
-implementation allows the use of {\tt git merge-file} to control the
+modified lines of code.  Our
+implementation allows the use of the {\tt git merge-file} algorithm to control the
 modification of most mutants, and uses our mechanism for
-selective mutant generation based on coverage to force mutation where
+selective mutant generation to force mutation where
 there is a conflict in a ``mutant patch.''
 
 
@@ -1397,8 +1431,18 @@ allowing the detection of very subtle remaining holes in tests for
 high-criticality software.
 
 We speculate that our somewhat lower scores and possibly higher
-equivalence rates derive from the simple fact that we generate more
-mutants than most tools.  The ease of defining mutation operators,
+equivalence rates derive from the simple fact that \emph{we generate
+substantially more (non-equivalent and overall)}
+mutants than most tools.  In fact, for every single language studied,
+our tool generated the largest number of mutants, and without a
+notably higher or unacceptable equivalence rate, or a notably lower
+mutation score.  Our mean number of generated valid, non-equivalent
+mutants (estimating based on our sample) was more than a factor of
+two larger than the nearest competing tool for all languages except
+Python, and was still more than 300 mutants larger than the nearest
+competing tool for Python.
+
+The ease of defining mutation operators,
 plus our interest in generating large numbers of mutants and
 prioritizing the most interesting, in order to make mutation testing useful for
 projects with extremely high quality test suites, or even using formal
@@ -1417,17 +1461,17 @@ expanding the set of mutation operations and classes of such
 operations, in the long run, is more important than using only a small
 set of ``good'' operators, in that the end-goal of mutation testing is
 to identify weaknesses in test suites, not simply to estimate a single
-score.  
-
-The price paid for this
+score.   The price paid for this
 expansiveness in allowing ways to detect weaknessess in testing is a
-larger number of mutants to execute, and a somewhat larger number of
-equivalent mutants.  This cost, we observe, falls especially on Comby in some
-cases, because Comby is better at identifying places to inject
-control flow changes that produce valid code, but do yield equivalent mutants in
-many cases.
+larger number of mutants to execute, and a slightly larger number of
+equivalent mutants.
 
-However, for our approach, this is not a
+%This cost, we observe, falls especially on Comby in some
+%cases, because Comby is better at identifying places to inject
+%control flow changes that produce valid code, but do yield equivalent mutants in
+%many cases.
+
+However, this is not a
 fundamental limitation or forced choice.  We propose as future work to
 split the operators for each level of the hierarchy into (at least) two sets, one
 set of core operators similar to (but larger than) those provided by
@@ -1639,30 +1683,21 @@ is required for the user to define new operators. Unlike comby, these operators 
 making their tool less maintainable.
 
 Finally, the practical use of mutation testing at Google argues that
-support for a variety of languages is critical.  Google has used its
-substantial resources to provide mutant generation for C++, Java,
-Python, Javascript, Go, Typescript, and Common
-Lisp~\cite{PetrovicMutationGoogle}, all of which we also support.  The
-operators Google uses for these
-languages (based on the original Mothra operators~\cite{offutt1996experimental}) are a subset of those provided by our implementation, with the caveat
-that block removal is only supported when using Comby;
-regular expression mutation is limited to single-line statement
-deletion.  For Lisp-like languages, the difficulty of identifying statements vs. value-returning
-function calls makes use of block deletion somewhat impractical.  The majority of the Google Mothra operators
-can be implemented as universal rules for all languages; only specializing
-logical operators and implementing block/statement deletion even requires
-language identification.  Unlike Google's mutation infrastructure, our
-tool is open source and easily extensible.
+support for a variety of languages is critical.  As noted above, we
+cover the set of languages and operators used in Google's internal
+mutation testing tools~\cite{PetrovicMutationGoogle}, but in an open
+source, easily extensible tool offering a large number of additional
+languages and operators.
 
-The approach reported in this paper was briefly presented in part in a
-tool paper (citation redacted for blinding purposes) that introduced
-the idea of using regular expressions to generate mutants for multiple
-languages, and provided an evaluation against PIT for a single toy
-Java program.  The present paper provides the full idea and context,
-provides empirical data for universal mutant generation on real world
-programs over four languages,
-and introduces the idea of using parser parser combinators to go
-beyond regular expression-based generation.
+% The approach reported in this paper was briefly presented in part in a
+% tool paper (citation redacted for blinding purposes) that introduced
+% the idea of using regular expressions to generate mutants for multiple
+% languages, and provided an evaluation against PIT for a single toy
+% Java program.  The present paper provides the full idea and context,
+% provides empirical data for universal mutant generation on real world
+% programs over four languages,
+% and introduces the idea of using parser parser combinators to go
+% beyond regular expression-based generation.
 
 \section{Conclusions and Future Work}
 
