@@ -929,7 +929,7 @@ initial mutant generation, and generally indicates a better
 \centering
 %\captionsetup{justification=centering}
 \footnotesize
-\caption{Regex vs. Comby for C++ (top), Java (middle), and Rust (bottom). LOC describes the project files considered. Muts. is total number of mutants generated for those files. Invalid mutants are those that don't compile.}
+\caption{Regex vs. Comby for C++ (top), Java (middle), and Rust (bottom). LOC describes the project files considered. Muts. is total number of mutants generated for those files. Invalid mutants are those that don't compile. Mut. Score refers to the Mutation Score.}
 \label{tab:table_cpp1javarust}
 
 \begin{varwidth}{.8\linewidth}
@@ -1014,7 +1014,7 @@ strum            & 90           & 428     & 11.92\% & 0.16 & 368    & 13.58\% & 
   to imbalanced parenthesis, bad indentation, or similar problems).  We can use TCE to check for redundant Python mutants, shown under ``Red.''}
 \label{tab:table_python1}
 \begin{varwidth}{.9\columnwidth}
-\begin{tabularx}{\linewidth}{l|r|rcrr|rcrr}
+\begin{tabularx}{\linewidth}{l|r|rcrc|rcrc}
 \toprule
 \toprule
                  &                 & \multicolumn{4}{c|}{\textbf{Regex}}             &\multicolumn{4}{c}{\textbf{Comby}}  \\[1ex]
@@ -1028,10 +1028,10 @@ python-api       & & & & & & \\[0.5ex]
 ESD              & 698             & 6268  & 1642  & 29.46\%    & 0.07           & 3874  & 614    & 44.18\% & 0.07\\
 fiber            & 358             & 1565  & 163   & 31.08\% & 0.62           & 1466  & 241    & 31.24\% & 0.64\\\bottomrule
 \end{tabularx}
-\begin{tabularx}{\linewidth}{Xllrrrrrrr}
+\begin{tabularx}{\linewidth}{Xllrrrrc}
                   && &  \textbf{Red.}     & \textbf{Valid}  & \textbf{Invalid}  & \textbf{\% Valid} &\textbf{Mut. Score}\\\midrule
 \multirow{4}{*}{\textbf{Overall}} & \multirow{2}{*}{Regex} & Mean &  565.00 & 913.00 & 1267.33 & 31.19\%  & 0.45\\
-    &   &  Std.Dev. & 584.79  & 708.93 & 813.35 & 11.06\%  & 0.23\\
+    &   &  Std.Dev. & 584.79  & 708.93 & 813.35 & 11.06\%  & 0.23\\\cline{2-8}
  & \multirow{2}{*}{Comby} & Mean & 416.67 & 839.33 & 840.67 & 35.84\% & 0.46\\
   &   &  Std.Dev. &  211.62 & 628.79 & 418.99 & 12.28\%  & 0.24 \\\bottomrule
 \end{tabularx}
@@ -1262,7 +1262,7 @@ apk-parser & 333 & 0.08 & 3.3\% & 89 & 0.16  & 33 & 0.09 \\
 keract & 1471 & 0.26 & 6.7\% & 482 & 0.72 & 20.0\% & 921 & 0.27 & 3.3\% \\
 dtw & 866 & 0.55 & 0\% & 270 & 0.44 & 3.3\% & 713 & 0.46 & 27.7\% \\
 notion-sdk-py & 196 & 0.60 & 13.3\% & 63 & 0.65 & 0\% & 52 & 0.44 & 13.9\% \\
-atlassian- & \mr{2}{333} & \mr{2}{0.62} & \mr{2}{30.0\%} & \mr{2}{174} & \mr{2}{0.71}  & \mr{2}{13.3} & \mr{2}{106} & \mr{2}{0.74} & \mr{2}{3.5\%}  \\
+atlassian- & \mr{2}{333} & \mr{2}{0.62} & \mr{2}{30.0\%} & \mr{2}{174} & \mr{2}{0.71}  & \mr{2}{13.3\%} & \mr{2}{106} & \mr{2}{0.74} & \mr{2}{3.5\%}  \\
 python-api  &    &    &    &    &   &   &   &  &  \\
 ESD & 1712 & 0.07 & 6.7\% & 720 & 0.08 & 13.3\% & 1013 & 0.06 & 6.7\% \\
 Fiber & 458 & 0.64 & 23.3\% & 222 & 0.57 & 46.7\% & 320 & 0.81 & 20.0\% \\\midrule
