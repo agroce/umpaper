@@ -1,0 +1,1682 @@
+%%
+%% This is file `sample-acmsmall-conf.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `acmsmall-conf')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-acmsmall-conf.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%%
+%% The first command in your LaTeX source must be the \documentclass
+%% command.
+%%
+%% For submission and review of your manuscript please change the
+%% command to \documentclass[manuscript, screen, review]{acmart}.
+%%
+%% When submitting camera ready or to TAPS, please change the command
+%% to \documentclass[sigconf]{acmart} or whichever template is required
+%% for your publication.
+%%
+%%
+\documentclass[acmsmall,screen,review,anonymous]{acmart}
+
+\usepackage{code}
+\usepackage{graphicx}
+\usepackage{balance}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{booktabs}
+%\usepackage{subfig}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{comment}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage{cleveref}
+
+\usepackage{tabularx} % for tables with adjustable column width
+\usepackage{makecell} % for formatting table cell contents
+\usepackage{varwidth} % for achieving window that spans to the widest row
+
+\definecolor{dkgreen}{rgb}{0,0.5,0}
+\definecolor{dkred}{rgb}{0.5,0,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+\lstdefinestyle{javastyle} {
+language=Java,
+basicstyle=\ttfamily\bfseries\footnotesize,
+  morekeywords={virtualinvoke},
+  keywordstyle=\color{blue},
+  ndkeywordstyle=\color{red},
+  commentstyle=\color{dkred},
+  stringstyle=\color{dkgreen},
+  numbers=left,
+  breaklines=true,
+  numberstyle=\ttfamily\footnotesize\color{gray},
+  stepnumber=1,
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false,
+  xleftmargin=.23in
+}
+\lstset{style=javastyle}
+
+\lstdefinelanguage{haskell}{
+  morekeywords={import,where,let,in,do,case,of,if,then,else,module,mutateAndTest,ParseFailed,ParseOk,mutateModule,mutateExp,main},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[n]{\{-}{-\}},
+  morestring=[b]",
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{olive},
+  stringstyle=\color{red},
+  breaklines=true,
+  breakatwhitespace=true,
+  literate={->}{$\rightarrow$}{1},
+}
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\um}{\texttt{universalmutator}\xspace}
+%% comments
+\newcommand{\clg}[1]{\textcolor{blue}{#1}}
+\newcommand{\adg}[1]{\textcolor{purple}{#1}}
+\newcommand{\kj}[1]{\textcolor{olive}{#1}}
+
+%% numbers
+\newcommand{\averageprojvariance}{402}
+\newcommand{\averagevariance}{604}
+\newcommand{\outliertotalfiles}{26}
+\newcommand{\outliertestissues}{12}
+\newcommand{\outlierumissues}{7}
+\newcommand{\outlierunclear}{7}
+\newcommand{\allcorr}{0.7479}
+\newcommand{\covcorr}{0.2066}
+\newcommand{\allrsquared}{0.573}
+\newcommand{\allr}{0.757}
+\newcommand{\covrsquared}{0.021}
+\newcommand{\covr}{0.145}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmcopyright}
+\copyrightyear{2023}
+\acmYear{2023}
+\acmDOI{XXXXXXX.XXXXXXX}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[FSE '24]{Foundations of Software Engineering}{July 2024}{Brazil}
+
+%%
+%%  Uncomment \acmBooktitle if the title of the proceedings is different
+%%  from ``Proceedings of ...''!
+%%
+%%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+%%  June 03--05, 2018, Woodstock, NY}
+\acmPrice{15.00}
+\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Syntax Is All You Need: A Universal-Language Approach to Mutant Generation}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Trovato et al.}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+  While mutation testing has been a topic of academic interest for
+decades, it is only recently that ``real-world'' developers, including
+industry leaders such as Google and Meta, have adopted mutation
+testing.  In this paper we propose a new approach to the development of mutation
+testing tools, and in particular the core challenge of
+\emph{generating mutants}.  Current practice tends towards two
+limited approaches to mutation generation: mutants are either (1)
+generated at the bytecode/IR level, and thus neither human readable
+nor adaptable to source-level features of languages or projects, or
+(2) generated at the source level by language-specific tools that are
+hard to write and maintain, and in fact are often abandoned by both
+developers and users.  We propose instead that source-level mutation
+generation is a special case of \emph{program transformation} in
+general, and that adopting this approach allows for a single tool that
+can effectively generate source-level mutants for essentially
+\emph{any} programming language. Furthermore, by using \emph{parser
+  parser combinators} many of the seeming limitations of an
+any-language approach can be overcome, without the need to parse
+specific languages.  We compare the universal program transformation
+approach to mutation to existing tools, and demonstrate the advantages
+of using parser parser combinators to improve on a simple regular-expression
+based approach to generation.  Finally, we show that our approach
+can provide effective mutant generation even for a language for which
+it lacks any language-specific operators, and that is not very similar
+in syntax to any language it has been applied to previously.
+\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10011007.10010940.10010992.10010998.10011001</concept_id>
+<concept_desc>Software and its engineering~Dynamic analysis</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10011007.10011074.10011099.10011102.10011103</concept_id>
+<concept_desc>Software and its engineering~Software testing and debugging</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Dynamic analysis}
+\ccsdesc[500]{Software and its engineering~Software testing and debugging}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+
+%\keywords{Software Testing, Mutants, Mutation Score, Equivalence}
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+
+%\received{20 February 2007}
+%\received[revised]{12 March 2009}
+%\received[accepted]{5 June 2009}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introduction}
+
+Mutation testing, though introduced in the late
+1970s~\cite{demillo1978hints,mathur2012foundations,demillo1978hints},
+has long been a topic of academic interest.  With the recent adoption of mutation
+testing by bellwether software industry companies including
+Google~\cite{GoogleMut}, Meta~\cite{BellerFacebookMutation}, and
+Amazon~\cite{AmazonMut}, interest in using mutation testing for
+real-world projects has grown widely in practice. 
+%
+Indeed, interest in mutation testing has become widespread enough in the open
+source community that a popular (more than 300 stars on GitHub)
+repository, ``Awesome Mutation Testing,'' lists more than 40 tools,
+covering almost twenty languages:
+\url{https://github.com/theofidry/awesome-mutation-testing}.  Some of
+these tools are the products of academic research; others are
+essentially the hobby projects of developers interested in enabling
+mutation testing for their favorite language.
+
+This diversity of tools highlights the growth of widespread interest in mutation
+testing.  However, it also demonstrates various ways that bringing mutation testing to
+typically polyglot modern projects is cumbersome. Each language (or IR, at
+minimum) requires its own underlying mutation and testing framework.
+Mutation tools are not trivial to develop; the smallest
+single-language tools we examined were nearly 4K LOC, and the mean size
+of a mutation testing tool was over 20K non-comment source lines.
+
+Newer languages, including ones with considerable interest
+in the development community, often lack mutation testing tools.  Even
+languages with a long history may long lack a working mutation testing
+tool; e.g., it was not until 2014 that Haskell had such a tool~\cite{mucheck}. 
+%
+Furthermore, the Haskell mutation tool is no longer
+supported,\footnote{The last commits or package updates were in 2015, and the
+primary author confirms that changes to {\tt haskell-src-ext} since
+introduced render it unusable at present.} and it
+appears that no successor tool has appeared in the ensuing
+years\footnote{There is FitSpec~\cite{FitSpec}, which is maintained,
+  but FitSpec does not perform traditional mutation testing or produce
+  source code (or bytecode) mutants; it rather
+  performs black-box type-aware mutation of function return values.}.
+Haskell developers (until now, see below) have no option for
+performing true mutation testing.
+
+Indeed, abandonment is a feature of the sad history
+of many mutation testing tools, exacerbating the challenges of its uptake.  The page listing abandoned
+mutation testing tools
+(\url{https://github.com/theofidry/awesome-mutation-testing/blob/master/abandoned.md})
+lists almost half as many tools as are under active maintenance. Each tool represents 
+considerable development effort, and was
+popular enough to be noted in the ``Awesome
+Mutation Testing'' resource. Many of the abandoned repositories have more than
+20 stars, suggesting inconvenienced users, especially for tools targeting
+evolving languages. While this is a minor concern for languages such as C
+that are relatively stable, it means that a mutation tool may fail
+to parse C++ 2020, and is particularly problematic for 
+faster-moving languages like Rust.
+
+%There
+%appears to be a significant risk in relying on any mutation tools other
+%than the most widely used and well-supported, such as PIT.
+A great deal of research effort has been devoted to devising clever
+schemes for reducing the computational burden of mutation testing over
+the years (e.g., ~\cite{offutt2001mutation,
+  untch1993mutation,KaufmanFAKAJ2022}); in practice, however, the recent adoption of mutation
+testing arguably relies more on the availability of vast (cloud) computing
+resources than any particular approach from the literature, beyond
+heuristic restrictions on the mutants used (e.g., one per line, or
+only some simple operators).   On the other hand, almost no
+research has addressed perhaps the most central issue of
+mutation testing: in the absence of a working mutation testing
+tool for the language in which one is developing software, one cannot
+obtain the benefits of mutation testing.  The absence of such tools is
+due to the high human cost of developing and maintaining mutation
+testing tools.  In particular, new languages may have unstable
+grammars, and few tools to aid developers in parsing and manipulating
+source code.   Ideally, mutation testing would be available for
+\emph{any} newly proposed programming language, as soon as that
+language has any community of users at all.  In the present
+state-of-the-art, however, it may be years before even rudimentary
+tools appear, and they may ``disappear'' shortly there-after.  In
+fact, the difficulties of parsing code make bytecode or IL-level
+mutation a popular recent choice in tool development, despite the advantages of source-based mutation for
+users of mutation testing~\cite{CompareSrcBinary}, including the
+ability to read and understand mutants (which is often essential if
+one aims to add a test to kill a mutant) and to define mutants in
+terms of source-level language (or even project/library-specific
+features).  Moreover, even this arguably less desirable bytecode mutation
+approach is not available for languages that do not compile to, e.g.,
+Java or LLVM bytecode, such as Haskell.
+
+In this paper, we argue that developing a large number of mutation
+testing tools, each requiring its own development community, workflow
+for mutation, and effort to keep up with language changes, is fundamentally
+unnecessary.  The core problem of mutation testing,
+\emph{mutant generation}, is simply a particular instance of the
+problem of \emph{program transformation}.  Program transformation
+considers the problem of taking a program, $P$, and producing a
+program, $P'$ that is the result of applying some function $f$ to $P$
+(i.e., $P' = f(P)$).  In mutant generation, we
+consider a family of functions $f$ where each $f_{o,loc}$ is an
+instantiation of a \emph{mutation operator} $o$  (as classically, if
+often informally, defined in the literature) at a particular program
+location $loc$ in $P$.  The inclusion of $loc$ in the specification of
+$f$ indicates that the problem is a specialization of general
+program transformation in that all classic mutation operators we are
+aware of are \emph{local}: they only affect a small portion of a
+program, genearlly a contiguous string of characters or tokens.
+
+Moreover, as this suggests,
+mutation testing can be treated as an almost entirely \emph{syntactic}
+transformation problem; in fact, in their classic introduction to
+software testing, Ammann and Offutt refer to mutation testing as
+``syntax-based testing'' ~\cite{ammann2016introduction}.  While, e.g., refactoring may need to
+``understand'' a program to some extent, mutation can often operate
+with essentially no context beyond a single line of code.
+
+We further propose that in fact, for the most part, mutant
+generation need not even ``know'' the syntax of a target language, in
+terms of a complete grammar.  Instead, mutation testing can operate to
+a large extent in a \emph{universal} manner, where programs are
+transformed at the level of \emph{patterns of characters}.  That is,
+each $o$ and $loc$ can be defined without reference to, e.g., the
+context-free grammar of a programming language, but only with respect
+to a position in $P$ treated as a string, and a transformation on a
+string defined in terms of, e.g., regular expressions with capture and
+replacement.  Treating mutant generation as a problem of (textual, local)
+program transformation provides two major benefits:
+
+\begin{enumerate}
+  \item A single tool can provide mutant generation for almost any
+    programming language, without needing to parse that language, and
+    rules for one language can be re-used for another language.  This
+    reduces the development and maintenance effort for mutation
+    testing tools by orders of magnitude.  Moreover, it removes the
+    need for many   maintenance activities related to parsing code;
+    such changes need to be made only when a change to the language
+    would introduce new mutation operators or modify existing ones.
+    The local nature of operators tends to make the second case rare.
+    \item The existing literature on multi-lingual or language
+      agnostic program transformation can be applied to the problem of
+      mutant generation, making it easy to express mutation operators
+      that operate across many languages, and efficient to generate
+      valid mutants even in the absence of language-specific
+      development effort.
+      \end{enumerate}
+
+It is true that this approach to mutant generation does pay a cost in
+terms of generating invalid mutants that must be rejected at the
+compilation stage of the mutation testing process.  However, as
+observed by Pizzoleto et al. in their systematic review of mutation
+testing~\cite{pizzoleto2019systematic} cost reduction approaches, mutation testing consists of four
+stages: 1) execution of a test suite on the un-mutated program, 2)
+generation of mutants, 3) execution of the test suite on the mutants,
+and 4) analysis (by a human, usually) of the mutants.  It is only steps 3
+and 4 that are ``very costly,'' as Pizzoletto et al. note.  Our approach increases the costs of
+the second step only, and, as we discuss below, can help reduce
+costs of steps 3 and 4.
+      
+The contributions of this paper are therefore:
+
+\begin{enumerate}
+  \item The description of a novel approach to mutant generation
+    based on generalized description of multi-lingual program transformations
+    that allows a single tool to handle mutant generation for
+    essentially all programming languages.  This approach also makes
+    mutation testing almost trivial to extend to most new languages and even allows
+    developers to write project-specific rules easily without
+    having to modify a mutation tool's implementation.
+
+          \item A proposal to use parser parser combinators to improve the
+      efficiency and expressive power of that approach, and an
+      evaluation of the gains thus achieved.
+
+    
+      \item A comparison of an implementation of mutant generation
+       based on this approach with existing tools for four important
+       programming languages.  The single-language tools range from
+       approximately 3,800 LOC to nearly 60,000 LOC, and, we emphasize, each handle
+       one programming language.  Our tool, which provides comparable
+       core mutation testing functionality, supports over a dozen
+       languages using only about 2,200 LOC of Python and less than 500
+       lines for rules defining mutation operators over a dozen
+       specific languages (and which can effectively mutate an
+       essentially unlimited number of other languages).
+
+       \item A small case study showing that our approach produces
+         useful results, even without the definition of
+         language-specific rules, for Haskell, a language arguably
+         well outside the language paradigms we considered when
+         developing the universal mutation rules.
+
+\end{enumerate}
+
+\section{A Universal Language Syntax-Based Approach}
+
+The key insight of this paper is that \emph{most mutation operators
+  proposed in the literature do not in fact require parsing of source
+  code.}  Consider, for example, one of the most commonly used
+mutation operators, replacement of arithmetic operations.  We do not
+need to parse a program containing the string {\tt ``x + y''} in order to
+replace that string with {\tt ``x - y''}.  Instead, this change is
+guaranteed to be effected if we simply search the program, represented
+as a string, for all occurrences of  {\tt ``+''}, and produce for each
+such occurrence, a mutant where tha character is replaced by {\tt
+  ``-''}.  Many languages express arithmetic as infix operators between
+expressions; if expressed syntactically, mutations for them can be expressed
+once, trivially implementing a large fraction of the classic Mothra~\cite{offutt1996experimental}
+mutation operators.
+
+The obvious objection to this simplistic approach is that unless we
+parse the code to identify arithmetic expressions, some of these
+replacements will be invalid.  E.g., in a C++ program we will produce
+mutants like {\tt x-+} replacing {\tt x++}.  However, most of these
+instances can be avoided by slightly more judicious choice of search
+target, e.g., instances of {\tt ``+''} where the preceeding or following
+character is not another {\tt ``+''}.  This may still in some cases produce
+invalid mutants, but rejecting such mutants is easy, since they will fail
+to compile.  Of course, we pay the price of
+compiling each mutant at generation
+time.  
+
+On the positive side, this argues that we can replace a
+complex implementation requiring parsing and analysis with
+one that only requires string search-and-replace.
+Such an implementation on face can be done using much less code. 
+% It also allows for simpler definitions of 
+% One can imagine an implementation of the above approach to arithmetic
+% operation replacement being implemented in as little as 10-20 lines of
+% Python code, including a call to a compiler to check for invalid
+%mutants.  
+Moreover, defining new mutation operators is not a matter of
+understanding a parsed program representation, but is essentially
+a matter of providing two strings, where the second is a proposed
+replacement for the first.  This simplifies operator specification from
+implementation of
+tree transformations into a minimal list. 
+%Instead of code for arithmetic operator
+%replacement, we can imagine the above hypothetical Python program
+%reading in a file of thus expressed mutation operators, and
+%implementing an unbounded number of operators in a minimalist fashion.
+
+Of course, simple string replacement cannot handle
+many interesting mutations.  Consider the classic case of statement
+deletion, one of the most widely used and important mutation
+operators~\cite{deng2013empirical}. This cannot be concisely specified with string pairs. 
+%  What string can we replace with another string in order to
+% delete a statement in a C program?  We would need an ``operator'' for
+% each possible C statement. 
+However, if we allow the use of
+\emph{regular expression match and replace pairs}, we can express this operator, with some precision:
+
+\begin{verbatim}
+(^\s*)(\S+[^{}]+.*)\n ==> \1/*\2*/\n
+\end{verbatim}
+
+In Python regular expression syntax, this expresses the replacement of
+strings with a possibly-empty amount of white space followed by a
+character pattern indicating a line of source code, with the same
+source code, preserving indentation, turned into a comment.
+
+Using regular expressions to express mutants has many benefits, and
+has been demonstrated to be possible, with a relatively small code base~\cite{regexpMut}.  While
+much more expressive than simple string replacement, regular
+expressions are familliar to most developers.  In principle,
+development of complex regular expressions for operators can even be
+performed by simply providing examples~\cite{bartoli2014automatic}  or
+describing the operator in natural
+language~\cite{zhong2018generating}.  
+These approaches speak to the potential of string manipulation-based approaches
+for mutation testing, without the need for program parsing or analysis. 
+
+% generation tool for a language by providing the equivalent of our
+% Python program above with a list of regular expression matches and
+% replacements is clearly much easier than writing a mutation tool from
+% scratch, and much easier to maintain and extend. 
+% CLG: This claim feels strong to me even though I know you think it's true
+% because you did it. ;-) 
+
+\subsection{Hierarchies of Operator Applicability}
+
+Regular expressions suggest a mechanism for textual transformation customized to
+multiple target languages, which could then share a single engine to apply rules
+to source files without the complexity of parsing. 
+However, we observe an additional property of mutation operators and mutation
+testing that speaks to the potential of a language-agnostic approach: many of the
+most widely used mutation operators in the literature are \emph{universal}.  For
+example, consider the case of replacing instances of {\tt
+  ``+''}  with {\tt ``-''}.  This mutation is not tied to any
+particular language, but applies to \emph{almost all programming
+  languages in use.}  Others are not quite
+so widely applicable, but still apply to a large number of specific
+languages, e.g., many programming languages share C's logical
+operators, though important exceptions like Python and Lisp-family
+languages do not.
+
+Implementing a tool for a language $L$ therefore, generally need not
+require writing rules for all mutation operators to be applied to $L$
+programs, but instead can proceed by process of 1) identifying $L$'s
+place in a \emph{hierarchy} of language \emph{families}, and then 2)
+identifying additional operators needed for $L$ itself.  The first of
+these tasks is often trivial, as in practice there are only a few
+basic syntactic forms for languages, at the level needed to describe
+transformation rules for operators.  In fact, ignoring the second step
+will often provide ``good-enough'' mutation testing, in that, for
+example, most of the Mothra rules and statement deletion can be
+entirely handled without descending to the specific-language level at all.
+
+As an
+example, consider mutation of Java code.  Many typical Java mutants can be
+generated by the kind of ``universal'' rules (e.g., arithmetic
+operator replacements) considered above.  Other mutation operators
+suitable for Java source are provided by considering the set of
+``C-like'' languages that use the logical operators and control
+constructs common to e.g.,  Java, C, and C++ ({{\tt if}, {\tt while},
+  etc.).  Statement deletion at the line level can also be implemented
+  by using the common comment notation for such languages.
+  Implementing Java mutation, given universal and C-like rules, may
+  require no more than a handful of additional rules.
+% Just an example style, the most important is the escapeinside part, the rest... not so much. you probably have your own.
+\lstdefinestyle{cstyle}{
+language=c,
+basicstyle=\ttfamily\bfseries\footnotesize,
+  morekeywords={virtualinvoke},
+  keywordstyle=\color{blue},
+  ndkeywordstyle=\color{red},
+  commentstyle=\color{dkred},
+% https://tex.stackexchange.com/questions/329533/listings-package-lstinline-command-has-strange-spacing-behaviour-after-double-qu
+  keepspaces=true,              % very important to preserve space after ' in footnote
+  numbers=left,
+  breaklines=true,
+  numberstyle=\ttfamily\footnotesize\color{gray},
+  stepnumber=1,
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false,
+  xleftmargin=.23in,
+  captionpos=b,
+  escapeinside={(?}{?)},
+}
+
+% set above style (or just use your style)
+\lstset{style=cstyle}
+
+\begin{figure}[hbtp]
+\centering
+\captionsetup{justification=centering} % Center-align the caption
+
+  \begin{tabular}{l|l}
+    \toprule
+    \mc{1}{c|}{\textbf{Regexp}} & \mc{1}{c}{\textbf{Comby}}                          \\\midrule
+    \mc{2}{c}{\textbf{Universal}} \\\midrule
+    {\lstinline|< ==> >|} & {\lstinline|:[a]<:[b] ==> :[a]>:[b]|}   \\
+    {\lstinline|< ==> ==|} & {\lstinline|:[a]<:[b] ==> :[a]==:[b]|} \\
+    {\lstinline|< ==> <=|}  & {\lstinline|:[a]<:[b] ==> :[a]<=:[b]|} \\\midrule
+\mc{2}{c}{\textbf{C-Like}} \\\midrule
+ {\lstinline|else ==>|}  & {\lstinline|else ==>|} \\
+ {\lstinline|if (\(.*\)) ==> if (!\1)|} &  {\lstinline|if (:[cond]) ==> if (!(:[cond]))|} \\
+ {\lstinline|if (\(.*\)) ==> if (1==1)|} & {\lstinline|if (:[cond]) ==> if (1==1)|} \\
+\toprule
+\mc{2}{c}{\textbf{Language-Specific}} \\\midrule
+ {\lstinline|synchronized ==>|} &  {\lstinline|synchronized ==>|} \\[0.5ex]
+{\lstinline|(^\s*)(\S+.*\n) ==> \1pass|} & {\lstinline|:[ s]:[expr]:[lf [\n]]|} \\
+                                                         &\hspace{42pt}{\lstinline|==> :[s]pass:[lf]|} \\
+ {\lstinline|any_of ==> all_of|} & {\lstinline|any_of ==> all_of|} \\
+\bottomrule
+\end{tabular}
+\caption{Mutation operator rule examples, using regular expressions (left) and the Comby language (right), based on parser parser combinators.}
+\label{tab:rules}
+\end{figure}
+
+The left-hand-side of Table~\ref{tab:rules} shows examples of universal, C-like, and
+language-specific rules for a few languages, taken directly from our
+implementation of regular-expression based operators (see Section \ref{sec:imp}).  In all cases, the form of a rule is: {\tt regexp
+  ==> replacement}, using Python regular expression and replacement
+syntax.  Such rules are often non-trivial to write and read; we show
+below that using parser parser combinators often simplifies and
+clarifies matters.
+
+We first show universal rules drawn from the large set of transformations for
+less-than comparisons.  The C-like rules are somewhat more
+complex: for removing elses (which always leaves valid code in
+C-like languages, but with the else clause always executing) and for
+replacing if conditions with, respectively, a negation and a
+constantly true expression.  Finally, we show
+language-specific rules, for, respectively, Java, Python (statement
+deletion, including a {\tt pass} and respecting indentation level),
+and C++.  The last rule was contributed by a user using our tool to
+perform mutation testing on the bitcoin core implementation.  For a
+C++ program, all of the universal rules and C-like rules will be
+applied, plus the last language-specific rule.  For a Python
+program, however, only the universal and Python-specific rule apply.
+
+
+\subsection{Beyond Regular Expressions with Parser Parser Combinators}
+% Better to frame this as "Beyond regex with PPC" than "PPC instead of RE" 
+% instead of RE" because RE pattern matching can be implemented by PPCs,
+% they are just pattern matching functions that can be restricted to lexical
+% RE-style matching too, and, e.g., comby embeds PCRE regex matching support,
+% as a parser combinator). In this sense, PPCs _really are_ a better/more
+% general/more universal matching engine abstraction at the expressivity level
+% where we care about mutating source syntax with CFG properties.
+
+
+
+
+While regular expressions have been shown to be capable of driving mutant generation, we
+propose going beyond regular expressions using a lightweight
+parser-driven approach that attunes mutation operators to
+language-general syntax-aware transformations. Such operators can
+perform tasks that go beyond regular transforms and ensure
+syntactically well-formed outputs (e.g., transformations must preserve
+balanced parentheses or braces). More generally, operators can be made
+sensitive to coarse-grained context-free grammar properties. In short,
+these
+operators go beyond the expressivity of regular expressions to generate more
+\emph{varied} and more \emph{valid} mutants.
+
+Parser parser combinators~\cite{vanTonderPPC} is a recent approach enabling
+syntax-transformation for multiple languages, and (we show) an apt choice for
+mutation testing operators. This key idea is to replace code constructs
+common to many languages (e.g., multi-line code blocks delineated by braces)
+with simple declarative patterns. Using parser combinators for coarse syntax
+matching avoids the complexity of integrating heterogeneous rewrite tools for
+mutation testing (e.g., one for Java, one for C++) and human effort to
+implement language-specific mutation operators (e.g., where the user has to
+learn to write operators for each language tool). The mechanization and
+expressive properties of parser parser combinators is covered in prior
+literature~\cite{vanTonderPPC}; in this paper we demonstrate that their application is
+uniquely effective for universal source-based mutation testing. In
+particular, we
+build mutation operators with Comby\footnote{https://comby.dev}, the tool that implements parser parser
+combinators to declaratively match and rewrite source code syntax. 
+
+Comby is especially suited for matching multi-line code blocks and
+disambiguating code from comments and strings---constructs that otherwise
+confound and complicate regular expression patterns. Comby supports over 40
+languages and implements a generic parser for additional languages to recognize
+their syntactic constructs. The following is a brief overview of Comby
+definitions and syntax for mutation operators implemented in our approach:
+
+\begin{itemize}
+
+\item \texttt{\small:[hole]} syntax matches source code assigned to a variable \emph{hole}. Holes match all characters (including whitespace) lazily up to its suffix (analogous to \texttt{\small.*?} in regex), but only \emph{within} its level of balanced delimiters. For example, \texttt{\small\{:[hole]\}} will match all characters inside balanced braces. By default, parentheses and square brackets are also treated as balanced delimiters, as applicable to most languages. 
+
+\item \texttt{\small ":[x]"} matches the body of a well-quoted string. Unlike \texttt{\small :[x]} (without quotes), the quoted variety implies that a data string may be any value, including strings that contain unbalanced parentheses, like \texttt{\small "item)"}.
+
+\item \texttt{\small:[hole:e]} matches words like \texttt{\small hello} and contiguous well-balanced expression-like syntax, like \texttt{\small print("hello world")} or \texttt{\small (a + b)}. It stops matching at whitespace boundaries, and so does not match a string like \texttt{\small a + b}. It also does not match unbalanced code syntax like \texttt{\small foo)} in typical languages where expressions are expected to be well-balanced.
+
+\item \texttt{\small :[[hole]]} matches alphanumeric characters in source code (similar to \texttt{\small\textbackslash w+} in regex).
+
+\item When a variable \emph{hole} occurs multiple times in a match
+  template, the matched values must be equal.
+
+\item Non-whitespace characters are matched literally.
+
+\item Contiguous whitespace (e.g., spaces, newline) match contiguous whitespace in the source code. That is, match templates are sensitive to the \emph{presence} of whitespace, but \emph{not} exact layout (i.e., the number of spaces may not correspond exactly between template and source code).
+
+\item Matching is insensitive to comments. Comments are parsed as whitespace when matching non-hole syntax.
+
+\end{itemize}
+
+The right-hand-side of Table~\ref{tab:rules} shows the same regular-expression rules 
+implemented as Comby patterns.  While some simple rules are
+unchanged, others are either more succinct or provide more context as
+to applicability (e.g., only less than between valid holes should be
+mutated).  This shows that a
+further major benefit of using Comby: once a user has learned
+the simple concepts above, it is often much easier to read---and
+especially \emph{write}---mutation
+operator definitions in Comby than using regular expressions.  The
+added precision comes not only ``for free'' but in fact yields a
+benefit for the ``end-user-programmer'' of mutations.
+
+Comby provides mechanisms to further define custom match syntax and behavior
+beyond these standard patterns.\footnote{https://comby.dev/docs/advanced-usage\#custom-language-definitions} Comby patterns can also embed regular expressions, subsuming their
+expressive power to enable regex-based mutation operators intermixed with
+context-free syntax
+properties\footnote{https://comby.dev/docs/basic-usage\#using-regular-expressions}.
+
+\section{Implementation}
+\label{sec:imp}
+
+We implemented our approach in a mutation testing tool, written in
+about 2,200 lines of Python.  The rules defining mutation operators
+for a set of languages including C, C++, Python, Java, Lisp, Swift,
+Rust, Solidity, Fe, Vyper, JavaScript, and Go, required another 436
+lines; this is the total for Comby and regexp-based rules, so each
+version requires only 218 lines of rule definitions.  The tool makes
+use of parser parser combinators via the {\tt comby-python} module.
+
+While many tools provide a GUI front-end, or integrate to a particular
+testing library, we chose to focus on an easily configured CLI,
+allowing a user to specify the commmands used to build mutants or
+run tests.  While less convenient in the case where there is a good
+fit between a tool's integrations and a project's environment, we
+found this flexibility useful even when limiting considerations to a
+single language.  For example, the widely used PIT system is strongly tied to
+certain versions of JUnit, and mutating projects using a different
+testing infrastructure, or an older JUnit, can be difficult.  Our
+approach also is suitable for use in CI and other automated
+environments.  The tool attempts to automatically identify which rule sets to use in
+mutating a source file, but can also be instructed to run fewer or
+more rule sets, and allows users to supply their own custom rule sets.
+
+For the most part we expect users to provide build commands, but do
+support automatic compilation and comparison of mutants for Python,
+Solidity, Fe, Vyper, Swift, Rust, and Java, including Trivial Compiler
+Equivalence~\cite{TCE} checks for redundancy of mutants.  These
+default handlers can always be over-ridden if they do not work with a
+particular build setup (for Python, the approach almost always works,
+but in the case of multi-file projects in other languages, it ususally
+requires some manual setup).
+
+The tool also provides a number of utilities, including mechanisms for
+incorporating code coverage into mutant selection, integration with a
+Python automated testing tool, prioritization of unkilled mutants to
+show dis-similar mutants early in a ranking (similar to the FPF
+approach to identifying unique bugs found in fuzzing
+\cite{10.1145/2491956.2462173}), and tools for pruning a class of
+mutants based on some criteria (e.g., removing all mutants of logging
+statements from a set of generated mutants).
+
+Our tool has been available as an open source project on GitHub (with
+over 100 stars to date) and
+available for installation via Python pip for
+some time, has received contributions from users not involved in
+our project, and has been adopted by at least one flagship project
+(over 19K stars) as
+its officially recommended mutation tool.  We omit details for
+purposes of blinding.
+
+\subsection{Incremental Mutation}
+
+One obvious concern with any-language source-based mutation is that every time the
+program changes, the cost of invalid mutants must be paid again.
+However, the locality of mutants and source changes in fact means this
+is seldom required.
+
+The {\tt git merge-file} utility takes a base file and two modified
+versions of that file, and produces an automatic merge, using the
+usual git merge resolution algorithm.    Because a mutant is a (very
+small) source change, this means that in practice updating a mutant to
+reflect even large changes to a source file is cost-free, and if the
+original mutant was valid, the new mutant will usually also be valid.
+New mutant generation is only required for new lines of code and
+modified lines of code.  To the extent development is incremental,
+therefore, mutant generation can also be incremental.  Our
+implementation allows the use of {\tt git merge-file} to control the
+modification of most mutants, and uses our mechanism for
+selective mutant generation based on coverage to force mutation where
+there is a conflict in a ``mutant patch.''
+
+
+\section{Experimental Evaluation}
+
+\begin{itemize}
+
+  \item{RQ1:}  How does the use of parser parser combinators modify 
+    the efficiency (in terms of invalid mutants) and effectiveness (in
+    terms of mutation score and equivalent mutants) of the universal
+    approach to mutant generation?
+
+\item{RQ2:}  How does the univeral approach, using regular expressions
+  or parser parser combinator rules, compare to existing
+  single-language mutation tools, in terms of number of generated
+  mutants, mutation scores, equivalent mutants, and other evaluation measures used in the literature?
+
+\end{itemize}
+
+
+Both research questions were addressed by generating and running
+mutants for a set of four programming languages: C++, Java, Python,
+and Rust.  The criteria for language selection was as follows: C++,
+Java, and Python are among the most widely used programming languages
+at present.  Furthermore, C++, unlike C, can be notoriously hard to
+parse, making development of mutation tools that use an AST and
+properly consider mutants of, e.g., code inside a template,
+difficult.  Java is the language in which mutation testing has been
+studied most extensively in recent literature, and PIT is almost
+certainly the most popular and widely used mutation tool.  Python long
+suffered from a lack of working and maintained mutation tools, despite
+a large number of abandoned efforts, though at present it is served by
+multiple maintained, AST-based tools.  Finally, Rust is an ``emerging
+language'' with few tools targeting it.  Table~\ref{tab:mutationtools}
+gives an overview of tools we identified for each language as working tools
+capable of single-file mutant generation.
+
+To evaluate both RQ1 and RQ2 we assembled a set of 24 source files,
+six from each language.  We first selected, using the GitHub search
+API and manual examination, six GitHub
+projects for each language meeting a set of criteria:
+
+\begin{enumerate}
+\item The project must have a minimum of 1,000 stars.
+  \item The percentage of source languages other than the target
+    language must be small.
+  \item There must be an executable test suite where all tests pass.
+    \item The project must be relatively easy to build, without a
+      large set of external dependencies.
+      \item In addition, for Java, we required use of maven.
+      \end{enumerate}
+
+      Files were then selected by picking for each project, the
+      largest source file that was less than 20KB in size.  If that
+      file was no covered by the test suite, the next closest to 20KB in order
+      was chosen.  Finally, if no source file under 20KB existed or
+      was covered by tests, the smallest file larger than 20KB covered
+      by tests was selected.
+
+
+We additionally present a small
+case study, applying our implementation to a program in a language for
+which it has \emph{no} rules, Haskell.  The case study concerns a
+fairly trivial example, but was chosen due to being the only program
+for which data was available as to the effectiveness of the tool we
+compared against (since that tool no longer works).
+
+\subsection{Regular Expressions vs. Parser Parser Combinators}
+
+While the primary advantages of using parser parser combinators as a
+basis for mutant generation are in expressiveness and ease of use,
+particularly rule readability, a second advantage is a reduction in
+the number of invalid mutants generated.
+
+Table~\ref{tab:table_cpp1javarust} and Table~\ref{tab:table_python1} compare generated
+mutants for Regex and Comby modes of our tool.  Invalid
+mutants are mutants that the tool produces, but which fail to
+compile.  The cost of each such mutant is usually small,
+since compilation generally fails early for trivial reasons (e.g.,
+{\tt break} or {\tt continue} outside a loop), 
+but reducing the number of such mutants directly reduces the cost of
+initial mutant generation, and generally indicates a better
+``understanding'' of the source being mutated.
+
+%\begin{tabular}{l|r|rr|rr}
+% ---------------- C++/Java/Rust table UM Only--------------------------
+\begin{table}[hbtp]
+\centering
+%\captionsetup{justification=centering}
+\footnotesize
+\caption{Regex vs. Comby for C++ (top), Java (middle), and Rust (bottom). LOC describes the project files considered. Muts. is total number of mutants generated for those files. Invalid mutants are those that don't compile.}
+\label{tab:table_cpp1javarust}
+
+\begin{varwidth}{.8\linewidth}
+\begin{tabularx}{\linewidth}{X|r|rrr|rrr}
+\bottomrule\toprule
+\mc{8}{c}{\textbf{C++}} \\\midrule
+                 &              & \multicolumn{3}{c|}{\textbf{Regex}} &\multicolumn{3}{c}{\textbf{Comby}}  \\
+\textbf{Project} & \textbf{LOC} & \textbf{Muts.} & \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} &  \textbf{Muts.} &  \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} \\\midrule
+ompl & 525 & 2533 & 23.49\% & 0.05 & 2174  & 25.94\% & 0.07  \\
+{libgraphqlparser} & 137 & 741 & 21.19\% & 0.90 & 440 & 29.77\% & 0.89\\
+{rethinkdb\_rebirth} &471 & 2246 & 24.27\% & 0.12 & 2009 & 24.49\% & 0.10\\
+xoreos & 732  & 3876  & 62.41\% & 0.01 & 3297 & 69.15\% & 0.01\\
+libxmljs &630 &  3989 & 22.09\% & 0.62 & 4008 & 19.71\% &
+0.64 \\[0.5ex]
+tiny-diff.-simulator &  195 & 1282 &58.27\% & 0.05 & 1214 & 63.43\% & 0.04\\
+\bottomrule
+\end{tabularx}
+\begin{tabularx}{\linewidth}{Xllrrrr}
+                  & &       & \textbf{Valid}  & \textbf{Invalid}  & \textbf{\% Valid} & \textbf{Mut. Score} \\\midrule
+ \multirow{4}{*}{\textbf{Overall}} & \multirow{2}{*}{Regex} & Mean     & 890.67 &  1553.83 & 35.28\% & 0.29\\
+%                          & & Med.    & 671.00 & 1579.00  & 23.88\%   \\
+                          & & Std.Dev. & 787.62 & 956.31   & 19.48\%  & 0.38\\\cline{2-7}
+  & \multirow{2}{*}{Comby}  & Mean     & 837.83 & 1352.50 & 38.75\%  & 0.29\\
+%                         & & Med.    & 667.00 & 1267.00 & 27.86\%  \\
+                         & & Std.Dev. & 745.78 & 1058.33 & 21.66\% & 0.37 \\\bottomrule
+ \end{tabularx}
+\begin{tabularx}{\linewidth}{X|r|crr|crr}
+\toprule
+\mc{8}{c}{\textbf{Java}} \\\midrule
+                 &              & \multicolumn{3}{c|}{\textbf{Regex}} &\multicolumn{3}{c}{\textbf{Comby}}  \\
+\textbf{Project} & \textbf{LOC} & \textbf{Muts.} & \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} &  \textbf{Muts.} &  \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} \\\midrule
+ pebble         & 279 & 1014 & 8.48\% & 0.81 & 752 & 11.30\%  & 0.80 \\
+ spring-hateoas & 397 & 2479 & 10.00\% & 0.33 & 1384 & 12.43\% & 0.37 \\
+ javacc         & 363 & 1888 & 28.70\% & 0.23 & 1276 & 38.71\% & 0.21 \\
+ coffee-gb      & 463 & 1927 & 11.63\% & 0.21 & 798 & 21.80\% & 0.23\\
+ egads          & 252 & 2454 & 25.43\% & 0.71 & 1163 & 51.33\% & 0.71\\
+ apk-parser     & 324 & 1583 & 22.17\% & 0.07 & 1199 & 27.77\% & 0.08 \\\bottomrule
+\end{tabularx}
+\begin{tabularx}{\linewidth}{Xllrrrr}
+              & & & \textbf{Valid}  & \textbf{Invalid}  & \textbf{\% Valid} & \textbf{Mut. Score} \\\midrule
+\multirow{4}{*}{\textbf{Overall}} & \mr{2}{Regex} & Mean     &  345.83 & 1545.00  & 17.74\% & 0.39\\
+%              &   & Med.     & 299.50 & 1524.50 & 16.90\%  \\
+              &   & Std.Dev. & 203.86 & 467.98 & 8.73\%  & 0.30\\\cline{2-7}
+& \mr{2}{Comby} & Mean     & 309.17 & 786.17 & 27.22\% & 0.40\\
+%              &   & Med.     & 253.50 & 724.50 & 24.79\% \\
+              &   & Std.Dev. & 202.44 & 235.24  & 15.59\% & 0.29 \\\bottomrule
+\end{tabularx}
+\begin{tabularx}{\linewidth}{X|r|crr|crr}
+\toprule
+\mc{8}{c}{\textbf{Rust}} \\ \midrule
+                 &              & \multicolumn{3}{c|}{\textbf{Regex}} &\multicolumn{3}{c}{\textbf{Comby}}  \\
+\textbf{Project} & \textbf{LOC} & \textbf{Muts.} & \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{Muts.} &  \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}}\\\midrule
+cargo release    & 346          & 2014   & 42.25\%  & 0.85
+& 2401   & 70.39\% & 0.80\\
+passarine        & 376          & 2294   & 9.29\%  & 0.57
+ & 1691   & 10.23\% & 0.52\\
+typos            & 463          & 1920   & 20.10\% & 0.76  & 1565   & 23.39\% & 0.77\\
+ord              & 533          & 2858   & 26.66\%  & 0.73
+& 2312   & 27.81\% & 0.83\\
+bazuka           & 285          & 1554   & 29.02\% & 0.62 & 1322   & 30.41\% & 0.73\\
+strum            & 90           & 428     & 11.92\% & 0.16 & 368    & 13.58\% & 0.22\\\bottomrule
+\end{tabularx}
+\begin{tabularx}{\linewidth}{Xllrrrr}
+               & & & \textbf{Valid}  & \textbf{Invalid}  & \textbf{\% Valid} & \textbf{Mut. Score} \\\midrule
+ \multirow{4}{*}{\textbf{Overall}} & \mr{2}{Regex} & Mean     &  452.33 &  1392.33 & 23.21\% & 0.62\\
+               &   & Std.Dev. & 309.05 & 656.76 & 12.16\%  & 0.24\\\cline{2-7}
+ & \mr{2}{Comby} & Mean     & 554.00 &  1055.83 & 29.30\% & 0.65\\
+ %              &   & Med.     & 253.50 & 724.50 & 24.79\% \\
+               &   & Std.Dev. & 592.63 & 508.30 & 21.62\%  & 0.25\\\bottomrule
+\end{tabularx}
+\end{varwidth}
+\end{table}
+
+%%% Regex vs Comby for Python
+
+\begin{table}[hbtp]
+\centering
+\small 
+\caption{Regex vs. Comby for Python. LOC describes the project files
+  considered. Muts. is total number of mutants generated for those
+  files.  Invalid mutants are ones that fail module load (e.g., due
+  to imbalanced parenthesis, bad indentation, or similar problems).  We can use TCE to check for redundant Python mutants, shown under ``Red.''}
+\label{tab:table_python1}
+\begin{varwidth}{.9\columnwidth}
+\begin{tabularx}{\linewidth}{l|r|rcrr|rcrr}
+\toprule
+\toprule
+                 &                 & \multicolumn{4}{c|}{\textbf{Regex}}             &\multicolumn{4}{c}{\textbf{Comby}}  \\[1ex]
+\textbf{Project} & \textbf{LOC}    & \textbf{Muts.} & \textbf{Red.}  & \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{Muts.} & \textbf{Red.}   &  \textbf{\% Valid} & \makecell{\textbf{Mut.} \\ \textbf{Score}}\\\midrule
+keract           & 402             & 3984  & 729   & 41.53\% & 0.28           & 3067  & 533    & 47.96\%    & 0.26\\
+dtw              & 118             & 2106  & 567   & 46.20\%    & 0.52           & 1835  & 639    & 47.19\%  & 0.55 \\
+notion-          & \mr{2}{189}     & \mr{2}{1038}  & \mr{2}{82}    & \mr{2}{18.89\%}   & \mr{2}{0.57}         & \mr{2}{1019}  & \mr{2}{122}    & \mr{2}{19.23\%} & \mr{2}{0.60}  \\
+sdk-py           & & & & & & \\[0.5ex]
+atlassian-       & \mr{2}{236}      & \mr{2}{1511}  & \mr{2}{207}   & \mr{2}{19.99\%}    & \mr{2}{0.64}        & \mr{2}{1319}  & \mr{2}{351}    & \mr{2}{25.25\%} & \mr{2}{0.62}  \\
+python-api       & & & & & & \\[0.5ex]
+ESD              & 698             & 6268  & 1642  & 29.46\%    & 0.07           & 3874  & 614    & 44.18\% & 0.07\\
+fiber            & 358             & 1565  & 163   & 31.08\% & 0.62           & 1466  & 241    & 31.24\% & 0.64\\\bottomrule
+\end{tabularx}
+\begin{tabularx}{\linewidth}{Xllrrrrrrr}
+                  && &  \textbf{Red.}     & \textbf{Valid}  & \textbf{Invalid}  & \textbf{\% Valid} &\textbf{Mut. Score}\\\midrule
+\multirow{4}{*}{\textbf{Overall}} & \multirow{2}{*}{Regex} & Mean &  565.00 & 913.00 & 1267.33 & 31.19\%  & 0.45\\
+    &   &  Std.Dev. & 584.79  & 708.93 & 813.35 & 11.06\%  & 0.23\\
+ & \multirow{2}{*}{Comby} & Mean & 416.67 & 839.33 & 840.67 & 35.84\% & 0.46\\
+  &   &  Std.Dev. &  211.62 & 628.79 & 418.99 & 12.28\%  & 0.24 \\\bottomrule
+\end{tabularx}
+\end{varwidth}
+\end{table}
+
+% % ---------------- Rust table UM Only --------------------------
+% \begin{table}[hbtp]
+% \centering
+% {\small
+% \caption{Rust (Regex vs. Comby)}
+% \label{tab:table_rust1}
+% \begin{tabularx}{\columnwidth}{X|r|cr|cr}
+% \toprule
+%                  &              & \multicolumn{2}{c|}{\textbf{Regex}} &\multicolumn{2}{c}{\textbf{Comby}}  \\
+% \textbf{Project} & \textbf{LOC} & $\frac{valid}{total}$ & \textbf{\%} & $\frac{valid}{total}$ &  \textbf{\%} \\[1ex]\midrule
+% cargo release    & 346          & $\frac{851}{2014}$   & 42.25\%  & $\frac{1690}{2401}$   & 70.39\% \\[1ex]
+% passarine        & 376          & $\frac{213}{2294}$   & 9.29\%  & $\frac{173}{1691}$   & 10.23\% \\[1ex]
+% typos            & 463          & $\frac{386}{1920}$   & 20.10\%  & $\frac{366}{1565}$   & 23.39\% \\[1ex]
+% ord              & 533          & $\frac{762}{2858}$   & 26.66\%  & $\frac{643}{2312}$   & 27.81\% \\[1ex]
+% bazuka           & 285          & $\frac{451}{1554}$   & 29.02\%  & $\frac{402}{1322}$   & 30.41\% \\[1ex]
+% strum            & 90           & $\frac{51}{428}$     & 11.92\%  & $\frac{50}{368}$     & 13.58\% \\[1ex]
+% \end{tabularx}
+%  \begin{tabularx}{\columnwidth}{Xllrrr}
+%                & & & Valid  & Invalid  & \% \\\midrule
+%  \multirow{6}{*}{\textbf{Overall}} & \mr{3}{Regex} & Mean     &  452.33 &  1392.33 & 23.21\% \\
+%                &   & Std.Dev. & 309.05 & 656.76 & 12.16\%  \\\cline{2-6}
+%  & \mr{3}{Comby} & Mean     & 554.00 &  1055.83 & 29.29\% \\
+%  %              &   & Med.     & 253.50 & 724.50 & 24.79\% \\
+%                &   & Std.Dev. & 592.63 & 508.30 & 21.63\%  \\\bottomrule
+% \end{tabularx}}
+% \end{table}
+
+The mean (and median) percentage of mutants that are valid is higher for
+Comby for all languages.  On average, even for a single modestly sized
+file, using parser combinator combinators saves 100-600 failed
+compilations.
+
+The number of valid mutants is usually
+slightly smaller for Comby, but Comby actually produces a larger mean
+(but not median) number of mutants for Rust, due to one project where
+Comby produces a much larger number of valid mutants.  As discussed 
+below, mutation scores and mutant equivalence rates are similar for
+both modes.
+
+On Python, TCE on Python bytecode was possible. The
+number of redundant (equivalent to the original bytecode, or
+the bytecode of an already-generated mutant) mutants was
+overall similar for both Regex and Comby, though varied widely by file.
+
+In sum, in addition to providing a major advantage in expressiveness
+(the ability to easily define complex multi-line mutations that
+preserve structure, e.g. going beyond statement deletion to block
+deletion), parser parser combinators offer a notable gain in the
+efficiency of initial mutant generation, with no apparent loss of overall effectiveness.
+
+\subsection{Universal Source-Based Mutation vs. Previous Approaches}
+
+\begin{table}[hbtp]
+    \small
+    \centering
+    \caption{\small Overview of Mutation Testing Tools. Our tool has significantly fewer lines of code than the single-language tools.}
+    \label{tab:mutationtools}
+    
+    \begin{tabular}{l|l|l|r}
+    %\toprule
+    \toprule
+    \textbf{Language} & \textbf{Tool} & \textbf{URL} & \textbf{LOC}  \\
+    \midrule
+    \multirow{2}{*}{Python}  & Mutmut & https://github.com/boxed/mutmut & 3870  \\
+        & cosmic-ray & https://github.com/sixty-north/cosmic-ray & 4599 \\ 
+    \midrule
+    \multirow{2}{*}{Java}  & PIT & https://github.com/hcoles/pitest & 59577  \\
+        & LittleDarwin & https://github.com/aliparsai/LittleDarwin & 22359 \\ 
+    \midrule
+        Rust & Cargo-Mutants & https://github.com/sourcefrog/cargo-mutants & 7020 \\
+    \midrule
+        C++ & Dextool & https://github.com/joakim-brannstrom/dextool & 38611 \\
+    \midrule
+        ALL & Our Tool & removed for blinding & 2244 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+    
+Table \ref{tab:mutationtools} shows the set of tools compared.  We
+attempted to identify well-maintained and commonly used open
+source tools for each
+language chosen.  The tools cover a number of paradigms; for the most
+part we did not choose bytecode based tools, since these often make it
+difficult or impossible to mutate a single source file.  PIT, however,
+provides this functionality and is perhaps the paradigmatic bytecode
+based mutation tool.  Only Dextool, for C++, implements the
+\emph{mutant schema}~\cite{untch1993mutation} approach often advocated
+in the research literature, where a single metaprogram is produced
+and, e.g., environment variabes are used to control which particular
+version of a program actually executes.  Using a schema has the major
+advantage of dramatically reducing the time required to compile
+mutants.  We speculate, however, that the fact that the approach is
+somewhat complex to implement for some kinds of mutants, and
+furthermore fails if even one invalid mutant is generated, has
+prevented most developers of non-academic tools from adopting it.
+
+The most striking thing about this table, and a strong support for
+the central argument of this paper, is that our implementation, which
+covers \emph{all the languages considered plus a number of additional
+languages}, is \emph{the smallest of the tools by a margin of over 1,000 LOC},
+and can be extended to handle additional languages with minimal
+effort.  Each currently supported language requires about 15 rules on
+average, though these must be implemented as both Regex and Comby
+rules if both modes are to be used for the language.
+
+The central question is: does using a universal approach produce
+notably less effective mutation testing?  Or, to put it another way,
+does the substantial effort required to develop and maintain a
+mutation tool for a single language pay off in obvious advantages in
+mutation testing results?
+Tables~\ref{tab:table_cpp2}-\ref{tab:table_rust2} show the results of
+mutation testing for the generated mutants for our tool, in both Regex
+and Comby modes, and the above-listed tools for each of the four
+studied languages.
+
+We do not report the time taken for mutation generation and testing.
+Dextools uses mutant schema, and PIT performs bytecode mutation, so
+both are much faster for compiling mutants, but other tools took similar
+amounts of time to compile mutants.   Mutant execution time was also
+generally similar, except for tools that produced very few mutants.
+We expect that our approach is generally slower for initial mutant
+generation, due to a higher number of invalid mutants, but that this
+cost is relatively small compared to the time required to compile and
+execute valid mutants for almost all projects.  An informal study of
+large Java projects by the author of the PIT gradle
+plugin\footnote{\url{https://solidsoft.wordpress.com/2017/09/19/how-fast-or-slow-mutation-testing-really-is/}}
+  suggests that even a successful compile of a typical project takes
+  somewhere between one-sixth to one-third the time required for
+  executing tests, and failed compiles are usually faster than
+  successful ones, since invalid mutants almost always fail during
+  parsing, and so code generation, optimization, and linking are not performed.
+
+We estimated mutant equivalence when possible by examining a sample of
+30 randomly selected unkilled mutants for each file.  For some tools,
+human inspection of the individual unkilled mutants was not feasible.
+However, we were of course able to estimtate the percent of unkilled
+mutants that were unkillable for our two modes for all files, and
+these numbers can be put in the perspective of rates reported in the
+literature.  Reports of equivalent mutant percentages in the
+literature sometimes report the percent of \emph{all} mutants
+(including killed mutants, which obviously cannot be equivalent) that
+are equivalent.  We follow Schuler and Zeller~\cite{EquivMut} in
+reporting the percentage of \emph{unkilled} mutants that were found to
+be equivalent.  Schuler and Zeller found about 45\% of unkilled
+mutants of Java programs to be equivalent.  Other reports of lower
+rates, e.g, 9\%~\cite{offutt1997automatically} or 7\%~\cite{TCE}, report the percent of
+\emph{all} mutants, and so map to much higher rates of
+equivalence over \emph{unkilled} mutants.  We suggest that as a
+fraction of unkilled mutants, a rate of 30\% or fewer equivalent
+mutants is good, and a rate of 10\% or below is very good.
+
+% ---------------- C++ table (UM vs Others)--------------------------
+\begin{table}[htbp]
+\centering
+%\small
+\caption{C++ (Our Implementation vs. Dextool). We cannot measure equivalent mutants for Dextool.}
+\label{tab:table_cpp2}
+\begin{varwidth}{.8\columnwidth}
+\begin{tabularx}{\linewidth}{X|rrr|rr}
+\toprule
+        & \multicolumn{3}{c|}{\textbf{Comby}}  & \multicolumn{2}{c}{\textbf{Dextool}} \\ 
+\textbf{Project} & \textbf{Muts.} & \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv.} & \textbf{Muts.} & \makecell{\textbf{Mut.} \\ \textbf{Score}} \\[1ex]\midrule
+ ompl &  564 & 0.07 & 26.7\% & 278 & 0.08  \\
+ libgraphqlparser  &  131 & 0.90 & 33.3\% & 52 & 0.96  \\
+ rethinkdb\_rebirth &  492 & 0.10 & 12.7\% & 25 & 0.36 \\
+ xoreos &  2280 & 0.01 & 3.3\% & 414 & 0.02  \\
+ libxmljs &  790 & 0.64 & 6.7\% & 830 & 0.46 \\[0.5ex]
+ tiny-differentiable-simulator &  770 & 0.04 & 0\% & 61 & 0.21  \\\midrule
+\textbf{Mean}   & 837.83 & 0.29 & 13.67\% & 276.67 & 0.33\\
+\textbf{Std.Dev.} & 745.78 & 0.37 & 13.50\%   & 311.56 & 0.38 \\\bottomrule
+\end{tabularx}
+\end{varwidth}
+\end{table}
+
+% ---------------- JAVA table (UM vs Others) --------------------------
+
+\begin{table}[htbp]
+\centering
+%\small
+\captionsetup{justification=centering}
+\caption{\small Java (Our Implementation vs. PIT vs. LittleDarwin).
+  Accurately determining if PIT bytecode mutants are equivalent is intractable;
+  LittleDarwin produces no equivalent mutants.}
+\label{tab:table_java2}
+
+\begin{varwidth}{.8\columnwidth}
+\begin{tabular}{l|rrr|rr|rr}
+\toprule
+                 & \mc{3}{c|}{\textbf{Comby}}   & \mc{2}{c|}{\textbf{PIT}} & \mc{2}{c}{\textbf{LittleDarwin}} \\
+\textbf{Project} & \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv}
+& \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}}
+& \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}} \\ \midrule
+
+pebble & 85 & 0.81 & 3.3\% & 20 & 0.95  & 8 & 1.00  \\
+spring-hateoas & 172 & 0.37 & 10.0\% & 114 & 0.28  & 38 & 0.39 \\
+javacc & 494 & 0.21 & 3.3\% & 143 & 0.21  & 82 & 0.78  \\
+coffee-gb & 174 & 0.23 & 0\% & 36 & 0.89 & 29 & 0.38  \\
+egads & 597 & 0.71 & 20.0\% & 107 & 0.81  & 85 & 0.87  \\
+apk-parser & 333 & 0.08 & 3.3\% & 89 & 0.16  & 33 & 0.09 \\
+\midrule
+\textbf{Mean} &  309.17 & 0.40 & 7.9\% & 84.83 & 0.55  & 45.83 & 0.59  \\
+\textbf{Std.Dev.} &  202.44 & 0.29 & 7.3\% & 47.60 & 0.37 & 30.93 & 0.35 \\\bottomrule
+\end{tabular}
+\end{varwidth}
+\end{table}
+
+% ----------------  Python table (UM vs Others) -------------------------------
+
+\begin{table}[htbp]
+\centering
+\caption{Python (Our Implementation vs. Mutmut vs. CosmicRay)}
+\label{tab:table_python2}
+\small
+\begin{tabular}{l|rrr|rrr|rrr}
+\toprule
+                 & \mc{3}{c|}{\textbf{Comby}}   & \mc{3}{c|}{\textbf{Mutmut}} & \mc{3}{c}{\textbf{CosmicRay}} \\
+\textbf{Project} & \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv}
+& \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv} 
+& \textbf{Muts.} &  \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv} \\ \midrule
+\midrule
+keract & 1471 & 0.26 & 6.7\% & 482 & 0.72 & 20.0\% & 921 & 0.27 & 3.3\% \\
+dtw & 866 & 0.55 & 0\% & 270 & 0.44 & 3.3\% & 713 & 0.46 & 27.7\% \\
+notion-sdk-py & 196 & 0.60 & 13.3\% & 63 & 0.65 & 0\% & 52 & 0.44 & 13.9\% \\
+atlassian- & \mr{2}{333} & \mr{2}{0.62} & \mr{2}{30.0\%} & \mr{2}{174} & \mr{2}{0.71}  & \mr{2}{13.3} & \mr{2}{106} & \mr{2}{0.74} & \mr{2}{3.5\%}  \\
+python-api  &    &    &    &    &   &   &   &  &  \\
+ESD & 1712 & 0.07 & 6.7\% & 720 & 0.08 & 13.3\% & 1013 & 0.06 & 6.7\% \\
+Fiber & 458 & 0.64 & 23.3\% & 222 & 0.57 & 46.7\% & 320 & 0.81 & 20.0\% \\\midrule
+\textbf{Mean} &  839.33 & 0.46 & 13.3\% & 321.83 & 0.53 & 16.1\% & 520.93 & 0.46 & 12.34\% \\
+\textbf{Std.Dev.} &  628.80 & 0.24 & 11.4\% & 239.04 & 0.24 & 16.7\% & 417.50 & 0.28 & 9.57\% \\\bottomrule        
+\end{tabular}
+\end{table}
+
+% ----------------  Rust table (UM vs Others) -------------------------------
+
+\begin{table}[htbp]
+\centering
+%\small
+\caption{Rust (Our Implementation vs. Cargo-Mutants)}
+\label{tab:table_rust2}
+\begin{varwidth}{.8\linewidth}
+\begin{tabularx}{\columnwidth}{X|rrr|rrr}
+\toprule
+        & \multicolumn{3}{c|}{\textbf{Comby}}  & \multicolumn{3}{c}{\textbf{Cargo-Mutants}} \\ 
+\textbf{Project} & \textbf{Muts.} & \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv.} & \textbf{Muts.} & \makecell{\textbf{Mut.} \\ \textbf{Score}} & \textbf{\% Eqv.} \\\midrule
+cargo release & 1690 & 0.80 & 0\% & 5 & 0.40 & 0\%   \\
+passarine & 173 & 0.52 & 26.7\% & 0 & 0.00 & 0\%   \\
+typos & 366 & 0.77 & 10.0\% & 6 & 0.83 & 0\%   \\
+ord & 643 & 0.83 & 20.0\% & 6 & 1.00 & 0\%   \\
+bazuka & 402 & 0.73 & 16.7\% & 0 & 0.00 & 0\%   \\
+strum & 50 & 0.22 & 6.7\% & 2 & 1.00 & 0\%   \\\midrule
+\textbf{Mean}   & 554.00 & 0.64 & 13.3\% & 3.17 & 0.54 & 0.00\%\\
+\textbf{Std. Dev} & 592.63 & 0.25 & 9.7\%   & 2.86 & 0.47 & 0.00\% \\\bottomrule
+\end{tabularx}
+\end{varwidth}
+\end{table}
+
+Previous studies comparing mutation tools for Java
+\cite{MajorPIT,gopinath2017does,CommACMJavaTool} found that results
+for individual projects often varied considerably across tools without
+indicating a clear advantage for one tool over another.  Our primary
+criteria for comparing tools is whether there is an overall pattern of
+clearly less-effective mutation for our approach.  We only report
+results for Comby, as Comby and Regexp approaches produced nearly
+identical mutation scores, and had similar equivalence rates.  In
+fact, Regexp equivalence rates were somewhat lower over all than those
+shown here.  Full results for Regexp mutation execution are included
+in our replication package.
+
+\subsubsection{C++}
+
+We found only one tool that allowed single-file mutation and worked
+reliably for C++.  Dextool generally produced fewer mutants than
+either mode of our tool, and for some projects produced an extremely
+small number of mutants.  For example, for the {\tt
+  tiny-differentiable-simulator} project, Dextool only produced a
+total of 61 mutants, and gave a much higher mutation score than our
+two modes.  Our tools produced more than 600 additional unkilled
+mutants, and none of the inspected mutants were equivalent.
+Similarly, Dextool only found 2 unkilled mutants for the {\tt
+  libgraphqlparser} project.  We doubt that the set of test weaknesses
+in the code is adequately represented by such a small number of
+mutants when our tools were able to produce significantly more
+unkilled mutants.  Even assuming Dextool's mutants are never
+equivalent (highly unlikely) and supposing that a third of our
+generated mutants are equivalent, it seems likely that Dextool is
+missing important mutants in some cases.  Overall, mean mutation
+scores were similar for Dextool and our tool, while
+median mutation scores were much lower for our tool, which produced
+many more unkilled mutants for some projects.  While our equivalence
+rate was somewhat high for one project, it was otherwise very good
+compared to results in the literature.  For C++, there seems to
+be no reason to suspect that the universal approach is producing
+sub-par mutation testing.
+
+\subsubsection{Java}
+
+For Java, we compare to PIT, arguably the standard for mutation
+testing tools in real-world usage (and a tool very frequently used in
+the literature) as well as LittleDarwin, a source-based tool.  Our
+tool produces lower but comparable mutation scores, and usually
+acceptable or excellent equivalence rates.  LittleDarwin produces
+\emph{no} equivalent mutants, but is a highly conservative tool, only
+implementing a small set of operators, and not including statement
+deletion.  Our tools always produced more non-equivalent unkilled
+mutants than PIT by a large margin.  Our equivalence rates were
+uniformly low, with a median of \emph{no} equivalent mutants.
+
+\subsubsection{Python}
+
+Our comparison of Python mutation tools again showed that there is no
+evident disadvantage to
+using our approach, in terms of mutation testing results.  Comby had a somewhat higher mean equivalence rate than the
+other tools (including the Regexp mode of our tool), but with one
+exception still achieved a very good equivalence rate.  Again, discarding
+equivalent mutants, our tool produced more mutants, and more unkilled
+mutants, than other tools, but still had a similar overall mutation
+score (the only clear outlier in scores is Mutmut's high score for the
+keract project).  We discuss
+possible reasons for higher Comby equivalence rates below.
+
+\subsubsection{Rust}
+
+Finally, for Rust, we observed that the Cargo-Mutants tool simply does
+not generate many mutants for a particular source file.  Mutation scores were broadly similar to
+ours, though lower, and none of the generated mutants we examined were
+equivalent, but for a couple projects Cargo-Mutants did not produce
+\emph{any compilable} mutants even though our tool was able to produce a large
+number of non-equivalent unkilled mutants.  Our tool did produce a
+very large percentage of equivalent mutants for one project, and high
+percentage for another project, but these numbers are still well
+within the range of expected results in past inspections of
+equivalent mutants.  We also note  that for Rust the cost for invalid
+mutants is unusually low, due to the availability of {\tt cargo check}
+which very quickly checks that code compiles, without actually
+compiling it, making our approach more attractive.  Some C++ compilers
+also offer fast syntax check facilities, e.g., {\tt -fsyntax-only} in g++.
+
+\subsubsection{Discussion: Summary of Tool Comparisons}
+
+Our tools produce somewhat lower mutation scores than other tools, and
+higher (though still generally good) equivalence rates than some
+tools, but clearly fall into the same broad similarity of behavior
+reported for high-quality mutation tools in the literature comparing
+Java mutation tools.   The tools with very low or zero equivalence rates, furthermore,
+are very conservative in mutation generation, and often simply don't
+produce many mutants.  In fact, inspection of the non-comment source
+lines as measured by CLOC as compared to results as shown in Tables~\ref{tab:table_cpp1javarust},
+Tables~\ref{tab:table_java2} and 
+\ref{tab:table_rust2} shows that for many programs, LittleDarwin and
+Cargo-Mutants generated \emph{much less than one mutant per actual
+  line code}.  Such a conservative approach is likely to produce few
+or no actionable (unkilled and non-equivalent) mutants for a program
+with a very good, high-coverage test suite.  But such suites are
+arguably the ones where mutation testing offers the most promise, by
+allowing the detection of very subtle remaining holes in tests for
+high-criticality software.
+
+We speculate that our somewhat lower scores and possibly higher
+equivalence rates derive from the simple fact that we generate more
+mutants than most tools.  The ease of defining mutation operators,
+plus our interest in generating large numbers of mutants and
+prioritizing the most interesting, in order to make mutation testing useful for
+projects with extremely high quality test suites, or even using formal
+verification, has encouraged us to take a ``let a thousand flowers bloom''
+approach to choosing mutation operators.  For example, our approach
+provides many more control-flow mutations than most tools, due to our
+observation that test suites sometimes fail to check for loop
+execution counts other than one and zero.  Few other tools introduce
+{\tt break} and {\tt continue} statements into programs, or transform
+one into the other.  These mutants are often equivalent (in fact, they
+give rise to a large number of our equivalent mutants reported above), but \emph{also
+sometimes expose subtle weaknesses in a high quality test suite}, in our
+experience.  In general, we take our philosophy of mutation from the
+proposal by Gopinath et al.~\cite{Limits,gopinath2017mutation} that
+expanding the set of mutation operations and classes of such
+operations, in the long run, is more important than using only a small
+set of ``good'' operators, in that the end-goal of mutation testing is
+to identify weaknesses in test suites, not simply to estimate a single
+score.  
+
+The price paid for this
+expansiveness in allowing ways to detect weaknessess in testing is a
+larger number of mutants to execute, and a somewhat larger number of
+equivalent mutants.  This cost, we observe, falls especially on Comby in some
+cases, because Comby is better at identifying places to inject
+control flow changes that produce valid code, but do yield equivalent mutants in
+many cases.
+
+However, for our approach, this is not a
+fundamental limitation or forced choice.  We propose as future work to
+split the operators for each level of the hierarchy into (at least) two sets, one
+set of core operators similar to (but larger than) those provided by
+LittleDarwin or Cargo-Mutants, and a set of ``aggressive'' operators
+that includes our full current set of operators, a very simple matter due to
+our approach to mutant generation.
+
+In fact, this brings us back to a point made in the introduction.
+While our approach introduces some unavoidable costs in the
+(relatively cheap, compared to execution and analysis) compilation stage of
+mutation testing, it may offer \emph{more} flexibility in addressing
+execution and analysis stages.  Defining limited custom sets of
+operators to run is trivial in our setting, making it easy to
+execute only, e.g., statement mutations, or, in a numeric-computation
+intensive codebase, only arithmetic operators.  Expanding the
+hierarchical structure to include ``famillies'' of mutation operators
+is trivial, and lets users specify fine-grained mutation
+generation for all languages used in a project, in a simple, consistent way.  Our approach also produces actual source
+copies of all generated mutants, making it easy to apply techniques
+like Predictive Mutation Testing~\cite{zhangPMT} that work with source
+code.  This also makes it easy to integrate, as we already have done, heuristic
+aids to mutant \emph{analysis} such as ranking of unkilled mutants by
+similarity and ``interstingness,'' an approach that has already proven
+useful in using mutation testing to improve static analysis tools~\cite{StatMut}.
+\subsection{Haskell Case Study}
+
+\begin{figure}
+
+\begin{lstlisting}
+ qsort :: [ Int] -> [ Int ]
+ qsort [] = []
+ qsort (x: xs ) = qsort l ++ [x] ++ qsort r
+     where l = filter (< x) xs
+           r = filter ( >= x) xs
+\end{lstlisting}
+\caption{\small Example from MuCheck Paper~\cite{mucheck}}
+\label{fig:haskell}
+\end{figure}
+
+Figure~\ref{fig:haskell} shows a simple Haskell program, the
+motivating example in the paper presenting the MuCheck~\cite{mucheck}
+mutation testing tool for Haskell.  As noted in the introduction, to our
+knowledge MuCheck is the first (and perhaps only) mutation tool for
+Haskell code.  MuCheck has not been updated since 2015.
+To see how our approach fares when mutating code in a language for
+which 1) it has no specific rules and 2) the assumption of a simple
+C-like syntax does not hold, we applied our implementation to this example.
+
+Using regular expressions, and only the universal rules, our tool
+generates 10 valid mutants and 34 invalid mutants of the code (22.73\%
+valid mutants).  Comby produces an identical 10 valid mutants, but 65
+invalid mutants (13.33\% validity).  Both tools produce a large number
+of invalid mutants here due to including rules such as adding {\tt
+  break} and {\tt continue} that are sufficiently widespread in
+applicability to be included in our ``universal'' set but do not apply
+to Haskell; we believe that comby's awareness of Haskell syntax in
+this case actually gives it \emph{more} opportunities to apply such
+``inappropriate'' mutants.
+
+These mutants produce a mutation
+score of 0.8 for the two properties defined in the original MuCheck
+paper.  In other words, like MuCheck, our tool is able to
+determine that the properties provided are insufficient.  In
+particular, while they check idempotence and that the result is
+sorted, they do not check that the result of {\tt qsort} is a permutaton of the input
+list.  The MuCheck paper only provides mutation scores for the two
+properties independently.  For idempotence, MuCheck gives a mutation
+score of 0.84, and our implementation yields a score of 0.8.  Checking
+only sortedness, MuCheck yields a score of 0.61, while our approach
+produces an even lower score of 0.4.  Our lower
+scores are not due to equivalent mutants: adding a property to check
+that the sorted list is a permutation of the original list kills all
+our mutants.
+
+Of course, our implementation does not provide the small set of Haskell-specific
+mutations provided by MuCheck (e.g., type-aware function replacement).  It nonetheless produces clearly useful
+mutants, even for a language arguably radically different from those
+for which the universal rules were developed.  In short, our approach
+likely provides users of a new language with mutation testing,
+\emph{even if no effort has been expended to define rules for the
+  language at all}.
+
+\subsection{Comparison with GPT 4}
+
+\begin{lstlisting}[language=haskell,caption={\textbf{Haskell Mutation Tool}},label=lst:mutationTool]
+{-# LANGUAGE FlexibleContexts #-}
+
+module MutationTool where
+
+import Language.Haskell.Exts
+
+-- Main function
+mutateAndTest :: String -> IO ()
+mutateAndTest filePath = do
+    parsedModule <- parseFile filePath
+    case parsedModule of
+        ParseFailed srcLoc err -> print err
+        ParseOk modul -> do
+            let mutatedModule = mutateModule modul
+            writeFile "Mutated.hs" $ prettyPrint mutatedModule
+            -- Here, you'd typically run your tests on "Mutated.hs"
+            -- For now, just printing the mutated code:
+            putStrLn $ prettyPrint mutatedModule
+
+-- Perform mutation on a module
+mutateModule :: Module -> Module
+mutateModule = everywhere (mkT mutateExp)
+
+-- Perform mutation on an expression
+mutateExp :: Exp -> Exp
+mutateExp (If cond trueBranch falseBranch) = If cond falseBranch trueBranch
+mutateExp x = x
+
+main :: IO ()
+main = mutateAndTest "YourFile.hs"
+\end{lstlisting}
+
+\begin{lstlisting}[caption={\textbf{GPT-4 Comby Haskell Rules}},label=lst:haskellcomby]
+head :[list] ==> last :[list]
+tail :[list] ==> init :[list]
+(:[expr1]) && (:[expr2]) ==> (:[expr1]) || (:[expr2])
+(:[expr1]) || (:[expr2]) ==> (:[expr1]) && (:[expr2])
+(:[expr1]) >>= (:[expr2]) ==> (:[expr1]) >> (:[expr2])
+...
+\end{lstlisting}
+
+To understand how our approach compares with state of the art large language models (LLM), we prompt GPT-4 to generate a mutation testing tool for Haskell.
+Surprisingly, the generated program in \cref{lst:mutationTool} has no syntax errors, and even runs to produce a mutant. However, the program only implements 
+the inverting conditionals operation, a small subset of all the operators our tool implements. Furthermore, like existing mutation testing tools for source code,
+the generated code performs AST manipulation in Haskell, making it harder to read than the comby rules of our approach. Asking the LLM to expand the set of rules,
+ produces more operators, however the number of mutants generated by such an approach would be a small subset of what our approach is capable of doing. 
+
+While LLMs are not able to generate fully working language specific mutation testing tools from scratch, they are capable of generating many interesting rules
+ that are specific to a given language. For example, prompting GPT-4 to generate Haskell rules generates the set of rules seen in \cref{lst:haskellcomby}. The generated rules are 
+ both valid comby syntax and language specific. Specifically, the replacing head with tail is a rule that would only apply to functional programming languages such as 
+ Haskell.
+
+\section{Threats to Validity}
+
+Our study only examined 24 total source files, from 24 different projects, across four different
+languages.  None of these files were very large, though they were of
+sizes common to many source files in projects across GitHub, and none
+were less than about 100 non-comment lines of code.  More importantly,
+there is no established way to compare mutation tools.
+Previous studies of the topic have generally simply expected that a
+useful tool must
+generate a significant number of non-equivalent unkilled mutants, and
+yield mutation scores that are broadly similar to those of other tools.
+
+\section{Data Availability}
+
+We have made a full replication package available at
+\url{https://figshare.com/s/7ab4bc9a156fec248528}.  See the README.md
+file included for details.  The package contains Python scripts to run
+our data collection and experiments, as well as full source
+code for our tool.
+
+\section{Related Work}
+
+Many approaches have been proposed to tackle the \emph{computational} cost of mutation, including weak-mutation, 
+meta-mutation, mutation-sampling, and predicting which mutants will be
+killed~\cite{offuttMutant1996,
+  untch1993mutation,KaufmanFAKAJ2022,zhang2016pmt}.  Approaches to reducing the cost of
+mutation analysis were categorized as \textit{do smarter}, \textit{do
+faster}, and \textit{do fewer} by Offutt et al.~\cite{offutt2001mutation}.
+The \textit{do smarter} approaches include space-time trade-offs, weak
+mutation analysis, and parallelization of mutation analysis. The \textit{do
+faster} approaches include mutant schema generation, code patching, and
+other methods to make mutants run faster. Finally, the
+\textit{do fewer} approaches try to reduce the number of mutants examined,
+and include selective mutation and mutant sampling.
+None of these approaches focus on the cost in \emph{human} time to
+develop and maintain mutation testing tools.  In fact, the complexity
+and sophistication of some of these approaches imposes a daunting
+barrier to those who would develop ``good'' mutation tools for a new
+language.
+
+Hariri et al. compared C mutation approaches at the source and
+compiler IR levels~\cite{CompareSrcBinary} and found that overall
+source level mutation was better, producing fewer mutants overall, but
+matching the IR approach in the important measures of surface and
+minimal mutants and overall mutation score.  Numerous studies compare
+Java mutation tools~\cite{MajorPIT,gopinath2017does}, including a
+recent article for a more general audience in Communications of the
+ACM~\cite{CommACMJavaTool} (perhaps showing the growing interest in
+practical mutation testing).  This paper showed that users
+considered active maintenance, support for a variety of testing
+frameworks, and support for recent Java versions as the most important
+features in a Java mutation tool.  The approach proposed in this paper
+by its nature tends to promise all three of these key factors without
+imposing burdens on maintainers. More recently, there has been some effort to create a 
+language agnostic tool~\cite{wodeltest}. However, their tool uses Wodel, a DSL, which 
+is required for the user to define new operators. Unlike comby, these operators are much harder to read, thus 
+making their tool less maintainable.
+
+Finally, the practical use of mutation testing at Google argues that
+support for a variety of languages is critical.  Google has used its
+substantial resources to provide mutant generation for C++, Java,
+Python, Javascript, Go, Typescript, and Common
+Lisp~\cite{PetrovicMutationGoogle}, all of which we also support.  The
+operators Google uses for these
+languages (based on the original Mothra operators~\cite{offutt1996experimental}) are a subset of those provided by our implementation, with the caveat
+that block removal is only supported when using Comby;
+regular expression mutation is limited to single-line statement
+deletion.  For Lisp-like languages, the difficulty of identifying statements vs. value-returning
+function calls makes use of block deletion somewhat impractical.  The majority of the Google Mothra operators
+can be implemented as universal rules for all languages; only specializing
+logical operators and implementing block/statement deletion even requires
+language identification.  Unlike Google's mutation infrastructure, our
+tool is open source and easily extensible.
+
+The approach reported in this paper was briefly presented in part in a
+tool paper (citation redacted for blinding purposes) that introduced
+the idea of using regular expressions to generate mutants for multiple
+languages, and provided an evaluation against PIT for a single toy
+Java program.  The present paper provides the full idea and context,
+provides empirical data for universal mutant generation on real world
+programs over four languages,
+and introduces the idea of using parser parser combinators to go
+beyond regular expression-based generation.
+
+\section{Conclusions and Future Work}
+
+We conclude that, by using a hierarchical, source-based approach,
+either relying on a pure-text regular expression definition of
+mutation operators or a richer parser parser combinator transformation
+definition, it is possible to implement effective, easily extensible
+mutation testing for essentially \emph{all} commonly used programming
+languages, and many non-so-commonly-used programming languages, in
+fewer lines of code than any single-language tool we examined.  This
+approach fundamentally relies on the insight that program mutation is
+just a restricted instance of the general problem of program
+transformation, where transformations are highly syntactic (rather
+than semantics-aware) and highly localized.
+
+As future work, we plan to give users more control over which mutation
+operators are used, with controls common to multiple languages.  We
+add that our approach in general seems to be a good fit to modern
+large software projects, which are often
+multilingual~\cite{Multilingual}: a single mutation tool can be used
+for an entire project.
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibliography}
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-acmsmall-conf.tex'.
