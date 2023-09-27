@@ -738,7 +738,7 @@ expressive properties of parser parser combinators is covered in prior
 literature~\cite{vanTonderPPC}; in this paper we demonstrate that their application is
 uniquely effective for universal source-based mutation testing. In
 particular, we
-build mutation operators with Comby\footnote{https://comby.dev}, the tool that implements parser parser
+build mutation operators with Comby (\url{https://comby.dev}), the tool that implements parser parser
 combinators to declaratively match and rewrite source code syntax. 
 
 Comby is especially suited for matching multi-line code blocks and
@@ -782,10 +782,10 @@ added precision comes not only ``for free'' but in fact yields a
 benefit for the ``end-user-programmer'' of mutations.
 
 Comby provides mechanisms to further define custom match syntax and behavior
-beyond these standard patterns.\footnote{https://comby.dev/docs/advanced-usage\#custom-language-definitions} Comby patterns can also embed regular expressions, subsuming their
+beyond these standard patterns. Comby patterns can also embed regular expressions, subsuming their
 expressive power to enable regex-based mutation operators intermixed with
 context-free syntax
-properties\footnote{https://comby.dev/docs/basic-usage\#using-regular-expressions}.
+properties.
 
 
 
@@ -1711,12 +1711,10 @@ than semantics-aware) and highly localized.
 
 As future work, we plan to give users more control over which mutation
 operators are used, with controls common to multiple languages.
-
-%We
-%add that our approach in general seems to be a good fit to modern
-%large software projects, which are often
-%multilingual~\cite{Multilingual}: a single mutation tool can be used
-%for an entire project.
+Our approach in general seems to be a good fit to modern
+large software projects, which are often
+multilingual~\cite{Multilingual}: a single mutation tool can be used
+for an entire project.
 
 %%
 %% The next two lines define the bibliography style to be used, and
