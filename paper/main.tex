@@ -1124,10 +1124,11 @@ slightly smaller for Comby, but Comby actually produces a larger mean
 Comby produces a much larger number of valid mutants.  The small gain
 in valid mutants for Regexp is partly due to Regexp (unfortunately)
 mutating some comments, and partly due to a reported, but not yet
-fixed, bug in Comby's handling of an operator swapping items in
-literal lists.  As discussed
-below, mutation scores and mutant equivalence rates are similar for
-both modes.
+fixed, bug in the Python front-end to Comby, affecting an operator
+that swaps literal list items.  As discussed
+below, mutation scores and mutant equivalence rates are very similar for
+both modes; mean mutation scores differed by at most 0.3, and project
+scores by more only for Rust.
 
 For Python, TCE on Python bytecode was possible. The
 number of redundant (equivalent to the original bytecode, or
