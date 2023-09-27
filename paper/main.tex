@@ -874,7 +874,7 @@ study of mutation testing that makes use of this type of operator,
 suggesting that it is difficult for other methods to implement, and is
 not in demand by users.
 
-One obvious concern with any-language source-based mutation is that every time the
+One concern with our approach is that every time the
 program changes, the cost of invalid mutants must be paid again.
 However, the locality of mutants and source changes in fact means this
 is seldom required.   Because a mutant is asmall source change, updating a mutant to
@@ -1121,11 +1121,15 @@ compilations.
 The number of valid mutants is usually
 slightly smaller for Comby, but Comby actually produces a larger mean
 (but not median) number of mutants for Rust, due to one project where
-Comby produces a much larger number of valid mutants.  As discussed
+Comby produces a much larger number of valid mutants.  The small gain
+in valid mutants for Regexp is partly due to Regexp (unfortunately)
+mutating some comments, and partly due to a reported, but not yet
+fixed, bug in Comby's handling of an operator swapping items in
+literal lists.  As discussed
 below, mutation scores and mutant equivalence rates are similar for
 both modes.
 
-On Python, TCE on Python bytecode was possible. The
+For Python, TCE on Python bytecode was possible. The
 number of redundant (equivalent to the original bytecode, or
 the bytecode of an already-generated mutant) mutants was
 overall similar for both Regex and Comby, though varied widely by file.
