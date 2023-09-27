@@ -221,7 +221,7 @@ basicstyle=\ttfamily\bfseries\footnotesize,
   While mutation testing has been a topic of academic interest for
 decades, it is only recently that ``real-world'' developers, including
 industry leaders such as Google and Meta, have adopted mutation
-testing.  In this paper we propose a new approach to the development of mutation
+testing.  We propose a new approach to the development of mutation
 testing tools, and in particular the core challenge of
 \emph{generating mutants}.  Current practice tends towards two
 limited approaches to mutation generation: mutants are either (1)
@@ -236,9 +236,9 @@ can effectively generate source-level mutants for essentially
 \emph{any} programming language. Furthermore, by using \emph{parser
   parser combinators} many of the seeming limitations of an
 any-language approach can be overcome, without the need to parse
-specific languages.  We compare the universal program transformation
+specific languages.  We compare this new
 approach to mutation to existing tools, and demonstrate the advantages
-of using parser parser combinators to improve on a simple regular-expression
+of using parser parser combinators to improve on a regular-expression
 based approach to generation.  Finally, we show that our approach
 can provide effective mutant generation even for a language for which
 it lacks any language-specific operators, and that is not very similar
@@ -381,9 +381,9 @@ features).  Moreover, even arguably less desirable bytecode mutation
 approach is not available for languages that do not compile to, e.g.,
 Java or LLVM bytecode-- e.g., Haskell and R.
 
-In this paper, we argue that developing a large number of mutation
+Developing a large number of mutation
 testing tools, each requiring its own development community, workflow
-for mutation, and effort to keep up with language changes, is fundamentally
+for mutation, and effort to keep up with language changes, may, however, be
 unnecessary.  The core problem of mutation testing,
 \emph{mutant generation}, is simply a particular instance of the
 problem of \emph{program transformation}.  Program transformation
@@ -474,11 +474,9 @@ The contributions of this paper are therefore:
        lines for rules defining mutation operators over a dozen
        specific languages (and which can effectively mutate an
        essentially unlimited number of other languages).  Our
-       approach, we emphasize, enables a smaller tool than any other tool
+       approach enables a smaller tool than any other tool
        we examined (by over 1000 LOC) to support a rich set of
-       operators (the full set used by Google's internal mutation
-       tools, plus a large number of additional operators) for all languages covered by other tools, plus a set
-       of additional languages.
+       operators for all languages covered by other tools, plus additional languages.
        \item Far from being limited by its implementation size and
          universality, our tool \emph{generates a larger number of valid,
          non-equivalent mutants} for every language we examined than
@@ -563,13 +561,14 @@ strings with a possibly-empty amount of white space followed by a
 character pattern indicating a line of source code, with the same
 source code, preserving indentation, turned into a comment.
 While much more expressive than simple string replacement, regular
-expressions are familliar to most developers.  In principle,
-development of complex regular expressions for operators can even be
-performed by simply providing examples~\cite{bartoli2014automatic}  or
-describing the operator in natural
-language~\cite{zhong2018generating}.  
-These approaches speak to the potential of string manipulation-based approaches
-for mutation testing, without the need for program parsing or analysis. 
+expressions are familliar to most developers.
+%In principle,
+%development of complex regular expressions for operators can even be
+%performed by simply providing examples~\cite{bartoli2014automatic}  or
+%describing the operator in natural
+%language~\cite{zhong2018generating}.  
+%These approaches speak to the potential of string manipulation-based approaches
+%for mutation testing, without the need for program parsing or analysis. 
 
 
 %Using regular expressions to express mutants has many benefits, and
@@ -1060,8 +1059,7 @@ strum            & 90           & 428     & 11.92\% & 0.16 & 368    & 13.58\% & 
 \small 
 \caption{Regex vs. Comby for Python. LOC describes the project files
   considered. Muts. is total number of mutants generated for those
-  files.  Invalid mutants are ones that fail module load (e.g., due
-  to imbalanced parenthesis, bad indentation, or similar problems).  We can use TCE to check for redundant Python mutants, shown under ``Red.''}
+  files.  Invalid mutants are ones that fail module load.  We use TCE to check for redundant Python mutants, shown under ``Red.''}
 \label{tab:table_python1}
 \begin{varwidth}{.9\columnwidth}
 \begin{tabularx}{\linewidth}{l|r|rcrc|rcrc}
@@ -1215,7 +1213,7 @@ generation, due to a higher number of invalid mutants, but that this
 cost is relatively small compared to the time required to compile and
 execute valid mutants for almost all projects.  An informal study of
 large Java projects by the author of the PIT gradle
-plugin\footnote{\url{https://solidsoft.wordpress.com/2017/09/19/how-fast-or-slow-mutation-testing-really-is/}}
+plugin~\cite{mutantSlow}
   suggests that even a successful compile of a typical project takes
   somewhere between one-sixth to one-third the time required for
   executing tests, and failed compiles are usually faster than
@@ -1483,11 +1481,9 @@ expansiveness in allowing ways to detect weaknessess in testing is a
 larger number of mutants to execute, and a slightly larger number of
 equivalent mutants.  However, this is not a
 fundamental limitation or forced choice.  We propose as future work to
-split the operators for each level of the hierarchy into (at least) two sets, one
-set of core operators similar to (but larger than) those provided by
-LittleDarwin or Cargo-Mutants, and a set of ``aggressive'' operators
-that includes our full current set of operators, a very simple matter due to
-our approach to mutant generation.
+split the operators for each level of the hierarchy into
+core operators and a set of ``aggressive'' operators
+that includes our full current set of operators.
 
 In fact, this brings us back to a point made in the introduction.
 While our approach introduces some unavoidable costs in the
@@ -1498,9 +1494,9 @@ operators to run is trivial in our setting, making it easy to
 execute only, e.g., statement mutations, or, in a numeric-computation
 intensive codebase, only arithmetic operators.  Expanding the
 hierarchical structure to include ``famillies'' of mutation operators
-is trivial, and lets users specify fine-grained mutation
-generation for all languages used in a project, in a simple, consistent way.  Our approach also produces actual source
-copies of all generated mutants, making it easy to apply techniques
+is trivial, and gives users great control over mutation.  Our approach
+produces source
+copies of all mutants, making it easy to apply techniques
 like Predictive Mutation Testing~\cite{zhangPMT} that work with source
 code.  This also makes it easy to integrate, as we already have done, heuristic
 aids to mutant \emph{analysis} such as ranking of unkilled mutants by
@@ -1554,27 +1550,30 @@ only sortedness, MuCheck yields a score of 0.61, while our approach
 produces an even lower score of 0.4.  Our lower
 scores are not due to equivalent mutants: adding a property to check
 that the sorted list is a permutation of the original list kills all
-our mutants.
-
-Of course, our implementation does not provide the small set of Haskell-specific
+our mutants.  Our implementation does not provide the small set of Haskell-specific
 mutations provided by MuCheck (e.g., type-aware function replacement).  It nonetheless produces clearly useful
 mutants, even for a language arguably radically different from those
-for which the universal rules were developed.  In short, our approach
-likely provides users of a new language with mutation testing,
-\emph{even if no effort has been expended to define rules for the
-  language at all}.
+for which the universal rules were developed. 
 
 \subsection{Comparison with GPT 4}
 
-\begin{lstlisting}[language=haskell,caption={\textbf{GPT-4 Generated Haskell Mutation Tool}},label=lst:mutationTool]
--- Perform mutation on a module
-mutateModule :: Module -> Module
+%\begin{lstlisting}[language=haskell,caption={\textbf{GPT-4 Generated Haskell Mutation Tool}},label=lst:mutationTool]
+%-- Perform mutation on a module
+%mutateModule :: Module -> Module
 
--- Perform mutation on an expression
-mutateExp :: Exp -> Exp
-mutateExp (If cond trueBranch falseBranch) = If cond falseBranch trueBranch
-mutateExp x = x
-...
+%-- Perform mutation on an expression
+%mutateExp :: Exp -> Exp
+%mutateExp (If cond trueBranch falseBranch) = If cond falseBranch trueBranch
+%mutateExp x = x
+%...
+%\end{lstlisting}
+
+
+\begin{lstlisting}[caption={\textbf{Example of GPT-4 Mutants for a Simple Haskell Program}},label=lst:haskellmutants]
+[0..] ==> [1..]
+IO () ==> IO String  
+"Current TODO list:" ==> "Updated TODO list:"
+"Invalid command: " ==> "Unrecognized command: "
 \end{lstlisting}
 
 \begin{lstlisting}[caption={\textbf{GPT-4 Comby Haskell Rules}},label=lst:haskellcomby]
@@ -1584,40 +1583,36 @@ tail :[list] ==> init :[list]
 (:[expr1]) >>= (:[expr2]) ==> (:[expr1]) >> (:[expr2])
 \end{lstlisting}
 
-\begin{lstlisting}[caption={\textbf{GPT-4 Mutants on a simple Haskell Program}},label=lst:haskellmutants]
-[0..] ==> [1..]
-IO () ==> IO String  
-"Current TODO list:" ==> "Updated TODO list:"
-"Invalid command: " ==> "Unrecognized command: "
-\end{lstlisting}
 
-To understand how our approach compares with state of the art large language models (LLM), we prompt GPT-4 to generate a mutation testing tool for Haskell.
-Surprisingly, the generated program in \cref{lst:mutationTool} has no syntax errors, and even runs to produce a mutant. However, the program only implements 
+To understand how our approach compares with state of the art large language models (LLM), we prompted GPT-4 to generate a mutation testing tool for Haskell.
+Surprisingly, the generated program had no syntax errors, and even ran to produce a mutant. However, the program only implemented
 the inverting conditionals operation and some basic module mutations,
 a small subset of all the operators our tool implements, despite our
-tool being unaware of Haskell's existence. Furthermore, like existing mutation testing tools for source code,
-the generated code performs AST manipulation in Haskell, making it harder to read than the Comby rules of our approach. Asking the LLM to expand the set of rules
+tool being unaware of Haskell's existence.. Asking the LLM to expand the set of rules
  produces more operators; however the number of mutants generated by
- such an approach would be a small subset of what our approach is
+ such an approach is still a small subset of what our approach is
  capable of doing, even for a language we do not technically support.
 
- Another approach is to have LLMs generate mutants for a given program. We experiment with prompting GPT-4 to generate mutants for a simple Haskell Todo-list management program.
- \cref{lst:haskellmutants} shows the mutants that GPT-4 generates for this program (formatted as before ==> after). Notice that some of the mutants generated make sense, and 
- resemble bugs a developer might make (replacing 0 with 1 or using the wrong data type). However, GPT-4 also generates equivalent mutants too, generating 
- (essentially) equivalent strings for all output to console. One is unlikely to generate tests that can kill these mutants, unless checking the exact string contents of all 
- logging messages. The error messages (potentially) could be checked,
- but the semantically equivalent meaning of these strings makes them
+ Another approach is to have LLMs generate mutants for a given program. We experiment with prompting GPT-4 to generate mutants for a simple Haskell TODO-list management program.
+ \cref{lst:haskellmutants} shows the mutants that GPT-4 generateed for this program (formatted as before ==> after). Notice that some of the mutants generated make sense, and 
+ resemble bugs a developer might make (replacing 0 with 1 or using the
+ wrong data type). However, GPT-4 also generated mutants changing
+strings for all outputs to the console. These are not fruitful
+mutants; the messages (potentially) could be checked,
+ but the arbitrary nature of such strings makes them
  poor mutants (which is why no mutation tools we are aware of
- implement such mutants).
+ implement such an operator).
 
-While LLMs are not able to generate fully working language specific mutation testing tools from scratch, they are capable of generating many interesting rules
+While LLMs are not able to generate fully working language specific
+mutation testing tools from scratch, they are capable of generating
+rules in our formats
  that are specific to a given language. For example, prompting GPT-4
  to generate Haskell rules for our tool generates the set of rules seen in \cref{lst:haskellcomby}. The generated rules are 
- both valid Comby syntax and language-specific. Specifically, replacing head with tail is a rule that would only apply to functional programming languages such as 
- Haskell.  This suggests that while extending other tools to include new rules
+ both valid Comby syntax and language-specific. E.g., replacing {\tt
+   head} with {\tt tail} is a useful Haskell-specific rule.  This suggests that while extending other tools to include new rules
  often involves writing complex code to manipulate ASTs, our tool may
  be extensible simply by requesting an LLM to implement a natural
- language description of the desired rule, since GPT-4 already knows
+ language description of the desired rule(s), since GPT-4 already knows
  how to use Comby (and write regular expressions).
 
 \section{Threats to Validity}
@@ -1670,18 +1665,18 @@ minimal mutants and overall mutation score.  Numerous studies compare
 Java mutation tools~\cite{MajorPIT,gopinath2017does}, including a
 recent article for a more general audience in Communications of the
 ACM~\cite{CommACMJavaTool} (perhaps showing the growing interest in
-practical mutation testing).  This paper showed that users
+practical mutation testing), which showed that users
 considered active maintenance, support for a variety of testing
 frameworks, and support for recent Java versions as the most important
 features in a Java mutation tool.  The approach proposed in this paper
 by its nature tends to promise all three of these key factors without
 imposing burdens on maintainers. More recently, there has been some effort to create a 
-language agnostic mutation testing tool~\cite{wodeltest}\footnote{An
-  additional paper on this general topic is a 4 page tool paper for an initial
-  prototype of our current tool, omitted for blinding.}. However, this tool uses
+language agnostic mutation testing tool~\cite{wodeltest}.  However, this tool uses
 Wodel, a new (and hard-to-read, compared to Comby) DSL for expressing operators, and requires users to
-define a set of operators for each language, without sharing
-of rules.
+define a set of operators for each language, without sharing  
+of rules.  An
+  additional paper on this general topic is a short tool paper for an initial
+  prototype of our current tool, omitted for blinding. 
 
 %Finally, the practical use of mutation testing at Google argues that
 %support for a variety of languages is critical.  As noted above, we
@@ -1715,11 +1710,13 @@ transformation, where transformations are highly syntactic (rather
 than semantics-aware) and highly localized.
 
 As future work, we plan to give users more control over which mutation
-operators are used, with controls common to multiple languages.  We
-add that our approach in general seems to be a good fit to modern
-large software projects, which are often
-multilingual~\cite{Multilingual}: a single mutation tool can be used
-for an entire project.
+operators are used, with controls common to multiple languages.
+
+%We
+%add that our approach in general seems to be a good fit to modern
+%large software projects, which are often
+%multilingual~\cite{Multilingual}: a single mutation tool can be used
+%for an entire project.
 
 %%
 %% The next two lines define the bibliography style to be used, and
