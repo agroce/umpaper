@@ -299,8 +299,7 @@ real-world projects has grown widely in practice.
 Indeed, interest in mutation testing has become widespread enough in the open
 source community that a popular (more than 300 stars on GitHub)
 repository, ``Awesome Mutation Testing,'' lists more than 40 tools,
-covering almost twenty languages:
-\url{https://github.com/theofidry/awesome-mutation-testing}.  Some of
+covering almost twenty languages.\footnote{\url{https://github.com/theofidry/awesome-mutation-testing}}  Some of
 these tools are the products of academic research; others are
 essentially the hobby projects of developers interested in enabling
 mutation testing for their favorite language.
@@ -652,8 +651,8 @@ basicstyle=\ttfamily\bfseries\footnotesize,
 
 \begin{table}[hbtp]
 \centering
-\captionsetup{justification=centering} % Center-align the caption
-
+\small
+\caption{Mutation operator rule examples, using regular expressions (left) and the Comby language (right), based on parser parser combinators.}
   \begin{tabular}{l|l}
     \toprule
     \mc{1}{c|}{\textbf{Regexp}} & \mc{1}{c}{\textbf{Comby}}                          \\\midrule
@@ -673,7 +672,6 @@ basicstyle=\ttfamily\bfseries\footnotesize,
  {\lstinline|any_of ==> all_of|} & {\lstinline|any_of ==> all_of|} \\
 \bottomrule
 \end{tabular}
-\caption{Mutation operator rule examples, using regular expressions (left) and the Comby language (right), based on parser parser combinators.}
 \label{tab:rules}
 \end{table}
 
@@ -976,6 +974,7 @@ initial mutant generation, and generally indicates a better
 % ---------------- C++/Java/Rust table UM Only--------------------------
 \begin{table}[hbtp]
 \centering
+\small
 %\captionsetup{justification=centering}
 \footnotesize
 \caption{Regex vs. Comby for C++ (top), Java (middle), and Rust (bottom). LOC describes the project files considered. Muts. is total number of mutants generated for those files. Invalid mutants are those that don't compile. Mut. Score refers to the Mutation Score.}
@@ -1247,8 +1246,8 @@ mutants is good, and a rate of 10\% or below is very good.
 % ---------------- C++ table (UM vs Others)--------------------------
 \begin{table}[htbp]
 \centering
-%\small
-\caption{C++ (Our Implementation vs. Dextool). We cannot measure equivalent mutants for Dextool.}
+\small
+\caption{C++ (Comby vs. Dextool). We cannot measure equivalent mutants for Dextool.}
 \label{tab:table_cpp2}
 \begin{varwidth}{.8\columnwidth}
 \begin{tabularx}{\linewidth}{X|rrr|rr}
@@ -1271,9 +1270,8 @@ mutants is good, and a rate of 10\% or below is very good.
 
 \begin{table}[htbp]
 \centering
-%\small
-\captionsetup{justification=centering}
-\caption{\small Java (Our Implementation vs. PIT vs. LittleDarwin).
+\small
+\caption{Java (Comby vs. PIT vs. LittleDarwin).
   LittleDarwin and PIT produce no equivalent mutants.}
 \label{tab:table_java2}
 
@@ -1302,7 +1300,7 @@ apk-parser & 333 & 0.08 & 3.3\% & 89 & 0.16  & 33 & 0.09 \\
 
 \begin{table}[htbp]
 \centering
-\caption{Python (Our Implementation vs. Mutmut vs. CosmicRay)}
+\caption{Python (Comby vs. Mutmut vs. CosmicRay)}
 \label{tab:table_python2}
 \small
 \begin{tabular}{l|rrr|rrr|rrr}
@@ -1328,8 +1326,8 @@ Fiber & 458 & 0.64 & 23.3\% & 222 & 0.57 & 46.7\% & 320 & 0.81 & 20.0\% \\\midru
 
 \begin{table}[htbp]
 \centering
-%\small
-\caption{Rust (Our Implementation vs. Cargo-Mutants)}
+\small
+\caption{Rust (Comby vs. Cargo-Mutants)}
 \label{tab:table_rust2}
 \begin{varwidth}{.8\linewidth}
 \begin{tabularx}{\columnwidth}{X|rrr|rrr}
@@ -1634,14 +1632,6 @@ yield mutation scores that are broadly similar to those of other
 tools, both tests that our tool passes with ease (and some tools we
 compared to do not always pass).
 
-\section{Data Availability}
-
-We have made a full replication package available at
-\url{https://figshare.com/s/7ab4bc9a156fec248528}.  See the README.md
-file included for details.  The package contains Python scripts to run
-our data collection and experiments, as well as full source
-code for our tool.
-
 \section{Related Work}
 
 Many approaches have been proposed to tackle the \emph{computational} cost of mutation, including weak-mutation, 
@@ -1716,10 +1706,18 @@ than semantics-aware) and highly localized.
 
 As future work, we plan to give users more control over which mutation
 operators are used, with controls common to multiple languages.
-Our approach in general seems to be a good fit to modern
+Our approach is a good fit to modern
 large software projects, which are often
 multilingual~\cite{Multilingual}: a single mutation tool can be used
 for an entire project.
+
+\section{Data Availability}
+
+We have made a full replication package available at
+\url{https://figshare.com/s/7ab4bc9a156fec248528}.  See the README.md
+file included for details.  The package contains Python scripts to run
+our data collection and experiments, as well as full source
+code for our tool.
 
 %%
 %% The next two lines define the bibliography style to be used, and
