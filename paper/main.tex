@@ -45,7 +45,7 @@
 %% for your publication.
 %%
 %%
-\documentclass[acmsmall,screen,review,anonymous]{acmart}
+\documentclass[acmsmall]{acmart}
 
 \usepackage{code}
 \usepackage{graphicx}
@@ -194,6 +194,29 @@ basicstyle=\ttfamily\bfseries\footnotesize,
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
 \title{Syntax Is All You Need: A Universal-Language Approach to Mutant Generation}
+
+
+\author{Sourav Deb}
+\affiliation{\institution{Northern Arizona University}
+\country{United States}}
+
+\author{Kush Jain}
+\affiliation{\institution{Carnegie Mellon University}
+\country{United States}}
+
+\author{Rijnard van Tonder}
+\affiliation{\institution{Mysten Labs}
+\country{United States}}
+
+\author{Claire Le Goues}
+\affiliation{\institution{Carnegie Mellon University}
+\country{United States}}
+
+
+\author{Alex Groce}
+\affiliation{\institution{Northern Arizona University}
+\country{United States}}
+
 
 %%
 %% end of the preamble, start of the body of the document source.
@@ -491,9 +514,15 @@ The contributions of this paper are therefore:
          well outside the language paradigms we considered when
          developing the universal mutation rules.
 
-\end{enumerate}
+       \end{enumerate}
 
-\section{A Universal Language Syntax-Based Approach}
+       Our tool implementing these ideas, the \emph{universalmutator}, is available on GitHub at
+       \url{https://github.com/agroce/universalmutator}, and can be
+       installed via Python pip.    We
+       welcome contributions and improvement suggestions.  Our tool is
+       the official recommended tool for mutation of Solidity programs (\url{https://docs.soliditylang.org/en/latest/resources.html}).
+
+\section{A Universal-Language Syntax-Based Approach}
 
 The key insight of this paper is that \emph{most mutation operators
   proposed in the literature do not in fact require parsing of source
@@ -507,11 +536,13 @@ such occurrence, a mutant where tha character is replaced by {\tt
   ``-''}.  Many languages express arithmetic as infix operators between
 expressions; if expressed syntactically, mutations for them can be expressed
 once, trivially implementing a large fraction of the classic Mothra~\cite{offutt1996experimental}
-mutation operators.
+mutation operators.  In a \emph{syntactical} (but not semantic) sense, we claim, there is almost a ``universal'' (very
+abstract, never implemented) programming language, of which almost all
+particular programming languages can be treated as mere dialects.
 
 The obvious objection to this simplistic approach is that unless we
 parse the code to identify arithmetic expressions, some of these
-replacements will be invalid.  E.g., in a C++ program we will produce
+replacements will be invalid; the universal language is not actually real!  E.g., in a C++ program we will produce
 mutants like {\tt x-+} replacing {\tt x++}.  However, most of these
 instances can be avoided by slightly more judicious choice of search
 target, e.g., instances of {\tt ``+''} where the preceeding or following
@@ -830,14 +861,14 @@ approach to identifying unique bugs found in fuzzing
 mutants based on some criteria (e.g., removing all mutants of logging
 statements from a set of generated mutants).
 
-Our tool has been available as an open source project on GitHub (with
-over 100 stars to date) and
-available for installation via Python pip for
-some time, has received contributions from users not involved in
-our project, and has been adopted by at least one flagship project
-(over 19K stars) as
-its officially recommended mutation tool.  We omit details for
-purposes of blinding.
+%Our tool has been available as an open source project on GitHub (with
+%over 100 stars to date) and
+%available for installation via Python pip for
+%some time, has received contributions from users not involved in
+%our project, and has been adopted by at least one flagship project
+%(over 19K stars) as
+%its officially recommended mutation tool.  We omit details for
+%purposes of blinding.
 
 \subsection{Supported Languages and Operators}
 
@@ -1163,7 +1194,7 @@ efficiency of initial mutant generation, with no apparent loss of overall effect
     \midrule
         C++ & Dextool & https://github.com/joakim-brannstrom/dextool & 38611 \\
     \midrule
-        ALL & Our Tool & removed for blinding & 2244 \\
+        ALL & Universalmutator & https://github.com/agroce/universalmutator & 2244 \\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -1659,7 +1690,7 @@ matching the IR approach in the important measures of surface and
 minimal mutants and overall mutation score.  Numerous studies compare
 Java mutation tools~\cite{MajorPIT,gopinath2017does}, including a
 recent article for a more general audience in Communications of the
-ACM~\cite{CommACMJavaTool} (perhaps showing the growing interest in
+ACM~\cite{CommACMJavaTool} (perhaps indicating a growing interest in
 practical mutation testing), which showed that users
 considered active maintenance, support for a variety of testing
 frameworks, and support for recent Java versions as the most important
@@ -1669,10 +1700,16 @@ imposing burdens on maintainers. More recently, there has been some effort to cr
 language agnostic mutation testing tool~\cite{wodeltest}.  However, this tool uses
 Wodel, a new (and hard-to-read, compared to Comby) DSL for expressing operators, and requires users to
 define a set of operators for each language, without sharing  
-of rules.  An
-  additional paper on this general topic is a short tool paper for an initial
-  prototype of our current tool, omitted for blinding. 
-
+of rules.  Groce et al. originally presented an initial
+  prototype of our approach in a short tool paper, lacking parser-parser combinator
+  support or a non-trivial empirical evaluation~\cite{regexpMut}.  
+  The universalmutator
+  was used in previous work proposing mutation-based evaluation and
+  improvement of static analysis tools~\cite{StatMut}, as a basis
+  for the mutation approach (using Comby) adopted in a paper on
+  improving turn-key compiler fuzzing~\cite{NoFuss}, and as a basis
+  for incorporating mutation generation in fuzzing~\cite{FirstFuzz},
+  as well as in other work simply using it as a mutation tool.
 %Finally, the practical use of mutation testing at Google argues that
 %support for a variety of languages is critical.  As noted above, we
 %cover the set of languages and operators used in Google's internal

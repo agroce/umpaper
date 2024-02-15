@@ -692,6 +692,14 @@ a service of  Schloss Dagstuhl - Leibniz Center for Informatics	homebrowsesearch
    year = {2014},
 }
 
+@inproceedings{FirstFuzz,
+  title={Registered report: First, fuzz the mutants},
+  author={Groce, Alex and Kalburgi, Goutamkumar Tulajappa and Le Goues, Claire and Jain, Kush and Gopinath, Rahul},
+  booktitle={International Fuzzing Workshop, ser. FUZZING},
+  volume={22},
+  year={2022}
+}
+
 @inproceedings{StaatsOracle,
   author    = {Matt Staats and
                Michael W. Whalen and
@@ -1557,6 +1565,26 @@ keywords = {fuzz testing, compiler testing, compiler defect, test-case reduction
   year = 1985,
   pages = "293--306",
 }
+
+@inproceedings{NoFuss,
+author = {Groce, Alex and van Tonder, Rijnard and Kalburgi, Goutamkumar Tulajappa and Le Goues, Claire},
+title = {Making no-fuss compiler fuzzing effective},
+year = {2022},
+isbn = {9781450391832},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3497776.3517765},
+doi = {10.1145/3497776.3517765},
+abstract = {Developing a bug-free compiler is difficult; modern optimizing compilers are among the most complex software systems humans build. Fuzzing is one way to identify subtle compiler bugs that are hard to find with human-constructed tests. Grammar-based fuzzing, however, requires a grammar for a compiler’s input language, and can miss bugs induced by code that does not actually satisfy the grammar the compiler should accept. Grammar-based fuzzing also seldom uses advanced modern fuzzing techniques based on coverage feedback. However, modern mutation-based fuzzers are often ineffective for testing compilers because most inputs they generate do not even come close to getting past the parsing stage of compilation. This paper introduces a technique for taking a modern mutation-based fuzzer (AFL in our case, but the method is general) and augmenting it with operators taken from mutation testing, and program splicing. We conduct a controlled study to show that our hybrid approaches significantly improve fuzzing effectiveness qualitatively (consistently finding unique bugs that baseline approaches do not) and quantitatively (typically finding more unique bugs in the same time span, despite fewer program executions). Our easy-to-apply approach has allowed us to report more than 100 confirmed and fixed bugs in production compilers, and found a bug in the Solidity compiler that earned a security bounty.},
+booktitle = {Proceedings of the 31st ACM SIGPLAN International Conference on Compiler Construction},
+pages = {194–204},
+numpages = {11},
+keywords = {mutation testing, fuzzing, compiler development},
+location = {Seoul, South Korea},
+series = {CC 2022}
+}
+
+
 
 @misc{mutantSlow,
   howpublished = "\url{https://solidsoft.wordpress.com/2017/09/19/how-fast-or-slow-mutation-testing-really-is/}",
