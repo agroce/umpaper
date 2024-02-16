@@ -419,7 +419,7 @@ location $loc$ in $P$.  The inclusion of $loc$ in the specification of
 $f$ indicates that the problem is a specialization of general
 program transformation in that all classic mutation operators we are
 aware of are \emph{local}: they only affect a small portion of a
-program, genearlly a contiguous string of characters or tokens.
+program, generally a contiguous string of characters or tokens.
 
 Moreover, as this suggests,
 mutation testing can be treated as an almost entirely \emph{syntactic}
@@ -489,7 +489,7 @@ The contributions of this paper are therefore:
       \item A comparison of an implementation of mutant generation
        based on this approach with existing tools for four important
        programming languages.  The single-language tools range from
-       approximately 3,800 LOC to nearly 60,000 LOC, and, we emphasize, each handle
+       approximately 3,800 LOC to nearly 60,000 LOC, and, we emphasize, each handles
        one programming language.  Our tool, which provides comparable
        core mutation testing functionality, supports over a dozen
        languages using only about 2,200 LOC of Python and less than 500
@@ -532,7 +532,7 @@ need to parse a program containing the string {\tt ``x + y''} in order to
 replace that string with {\tt ``x - y''}.  Instead, this change is
 guaranteed to be effected if we simply search the program, represented
 as a string, for all occurrences of  {\tt ``+''}, and produce for each
-such occurrence, a mutant where tha character is replaced by {\tt
+such occurrence, a mutant where the character is replaced by {\tt
   ``-''}.  Many languages express arithmetic as infix operators between
 expressions; if expressed syntactically, mutations for them can be expressed
 once, trivially implementing a large fraction of the classic Mothra~\cite{offutt1996experimental}
@@ -545,7 +545,7 @@ parse the code to identify arithmetic expressions, some of these
 replacements will be invalid; the universal language is not actually real!  E.g., in a C++ program we will produce
 mutants like {\tt x-+} replacing {\tt x++}.  However, most of these
 instances can be avoided by slightly more judicious choice of search
-target, e.g., instances of {\tt ``+''} where the preceeding or following
+target, e.g., instances of {\tt ``+''} where the preceding or following
 character is not another {\tt ``+''}.  This may still in some cases produce
 invalid mutants, but rejecting such mutants is easy, since they will fail
 to compile.  Of course, we pay the price of
@@ -591,7 +591,7 @@ strings with a possibly-empty amount of white space followed by a
 character pattern indicating a line of source code, with the same
 source code, preserving indentation, turned into a comment.
 While much more expressive than simple string replacement, regular
-expressions are familliar to most developers.
+expressions are familiar to most developers.
 %In principle,
 %development of complex regular expressions for operators can even be
 %performed by simply providing examples~\cite{bartoli2014automatic}  or
@@ -763,7 +763,7 @@ matching avoids the complexity of integrating heterogeneous rewrite tools for
 mutation testing (e.g., one for Java, one for C++) and human effort to
 implement language-specific mutation operators (e.g., where the user has to
 learn to write operators for each language tool). The mechanization and
-expressive properties of parser parser combinators is covered in prior
+expressive properties of parser parser combinators are covered in prior
 literature~\cite{vanTonderPPC}; in this paper we demonstrate that their application is
 uniquely effective for universal source-based mutation testing. In
 particular, we
@@ -849,7 +849,7 @@ Solidity, Fe, Vyper, Swift, Rust, and Java, including Trivial Compiler
 Equivalence~\cite{TCE} checks for redundancy of mutants.  These
 default handlers can always be over-ridden if they do not work with a
 particular build setup (for Python, the approach almost always works,
-but in the case of multi-file projects in other languages, it ususally
+but in the case of multi-file projects in other languages, it usually
 requires some manual setup).
 
 The tool also provides a number of utilities, including mechanisms for
@@ -906,7 +906,7 @@ not in demand by users.
 One concern with our approach is that every time the
 program changes, the cost of invalid mutants must be paid again.
 However, the locality of mutants and source changes in fact means this
-is seldom required.   Because a mutant is asmall source change, updating a mutant to
+is seldom required.   Because a mutant is a small source change, updating a mutant to
 reflect even large changes to a source file is nearly cost-free, and if the
 original mutant was valid, the new mutant will usually also be valid.
 New mutant generation is only required for new lines of code and
@@ -926,7 +926,7 @@ there is a conflict in a ``mutant patch.''
     terms of mutation score and equivalent mutants) of the universal
     approach to mutant generation?
 
-\item{RQ2:}  How does the univeral approach, using regular expressions
+\item{RQ2:}  How does the universal approach, using regular expressions
   or parser parser combinator rules, compare to existing
   single-language mutation tools, in terms of number of generated
   mutants, mutation scores, equivalent mutants, and other evaluation measures used in the literature?
@@ -1145,7 +1145,7 @@ fiber            & 358             & 1565  & 163   & 31.08\% & 0.62           & 
 
 The mean (and median) percentage of mutants that are valid is higher for
 Comby for all languages.  On average, even for a single modestly sized
-file, using parser combinator combinators saves 100-600 failed
+file, using parser parser combinators saves 100-600 failed
 compilations.
 
 The number of valid mutants is usually
@@ -1239,7 +1239,7 @@ mutation testing for the generated mutants for our tool, in Comby mode, and the 
 studied languages.  
 
 We do not report the time taken for mutation generation and testing.
-Dextools uses mutant schema, and PIT performs bytecode mutation, so
+Dextool uses mutant schema, and PIT performs bytecode mutation, so
 both are much faster for compiling mutants, but other tools took similar
 amounts of time to compile mutants.   Mutant execution time was also
 generally similar, except for tools that produced very few mutants.
@@ -1259,7 +1259,7 @@ We estimated mutant equivalence when possible by examining a sample of
 30 randomly selected unkilled mutants for each file.  For some tools,
 human inspection of the individual unkilled mutants was not possible.
 However, we were of course able to estimtate the percent of unkilled
-mutants that were unkillable for our two modes for all files, and
+mutants that were equivalent for our two modes for all files, and
 these numbers can be put in the perspective of rates reported in the
 literature.  Reports of equivalent mutant percentages in the
 literature sometimes report the percent of \emph{all} mutants
@@ -1511,7 +1511,7 @@ operations, in the long run, is more important than using only a small
 set of ``good'' operators, in that the end-goal of mutation testing is
 to identify weaknesses in test suites, not simply to estimate a single
 score.   The price paid for this
-expansiveness in allowing ways to detect weaknessess in testing is a
+expansiveness in allowing ways to detect weaknesses in testing is a
 larger number of mutants to execute, and a slightly larger number of
 equivalent mutants.  However, this is not a
 fundamental limitation or forced choice.  We propose as future work to
@@ -1567,7 +1567,7 @@ invalid mutants (13.33\% validity).  Both tools produce a large number
 of invalid mutants here due to including rules such as adding {\tt
   break} and {\tt continue} that are sufficiently widespread in
 applicability to be included in our ``universal'' set but do not apply
-to Haskell; we believe that comby's awareness of Haskell syntax in
+to Haskell; we believe that Comby's awareness of Haskell syntax in
 this case actually gives it \emph{more} opportunities to apply such
 ``inappropriate'' mutants.
 
@@ -1628,7 +1628,7 @@ tool being unaware of Haskell's existence. Asking the LLM to expand the set of r
  capable of doing, even for a language we do not technically support.
 
  Another approach is to have LLMs generate mutants for a given program. We experiment with prompting GPT-4 to generate mutants for a simple Haskell TODO-list management program.
- \cref{lst:haskellmutants} shows the mutants that GPT-4 generateed for this program (formatted as before ==> after). Notice that some of the mutants generated make sense, and 
+ \cref{lst:haskellmutants} shows the mutants that GPT-4 generated for this program (formatted as before ==> after). Notice that some of the mutants generated make sense, and 
  resemble bugs a developer might make (replacing 0 with 1 or using the
  wrong data type). However, GPT-4 also generated mutants changing
 strings for all outputs to the console. These are not fruitful
