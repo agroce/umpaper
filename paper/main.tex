@@ -135,27 +135,23 @@ basicstyle=\ttfamily\bfseries\footnotesize,
   \providecommand\BibTeX{{%
     Bib\TeX}}}
 
-%% Rights management information.  This information is sent to you
-%% when you complete the rights form.  These commands have SAMPLE
-%% values in them; it is your responsibility as an author to replace
-%% the commands and values with those provided to you when you
-%% complete the rights form.
-\setcopyright{acmcopyright}
-\copyrightyear{2023}
-\acmYear{2023}
-\acmDOI{XXXXXXX.XXXXXXX}
+%%% The following is specific to FSE '24 and the paper
+%%% 'Syntax Is All You Need: A Universal-Language Approach to Mutant Generation'
+%%% by Sourav Deb, Kush Jain, Rijnard van Tonder, Claire Le Goues, and Alex Groce.
+%%%
+\setcopyright{acmlicensed}
+\acmDOI{10.1145/3643756}
+\acmYear{2024}
+\copyrightyear{2024}
+\acmSubmissionID{fse24main-p529-p}
+\acmJournal{PACMSE}
+\acmVolume{1}
+\acmNumber{FSE}
+\acmArticle{30}
+\acmMonth{7}
+\received{2023-09-27}
+\received[accepted]{2024-01-23}
 
-%% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[FSE '24]{Foundations of Software Engineering}{July 2024}{Brazil}
-
-%%
-%%  Uncomment \acmBooktitle if the title of the proceedings is different
-%%  from ``Proceedings of ...''!
-%%
-%%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
-%%  June 03--05, 2018, Woodstock, NY}
-\acmPrice{15.00}
-\acmISBN{978-1-4503-XXXX-X/18/06}
 
 
 %%
@@ -198,23 +194,28 @@ basicstyle=\ttfamily\bfseries\footnotesize,
 
 \author{Sourav Deb}
 \affiliation{\institution{Northern Arizona University}
+  \city{Flagstaff, AZ}
 \country{United States}}
 
 \author{Kush Jain}
 \affiliation{\institution{Carnegie Mellon University}
+  \city{Pittsburgh, PA}
 \country{United States}}
 
 \author{Rijnard van Tonder}
 \affiliation{\institution{Mysten Labs}
+  \city{Palo Alto, CA}
 \country{United States}}
 
 \author{Claire Le Goues}
 \affiliation{\institution{Carnegie Mellon University}
+  \city{Pittsburgh, PA}  
 \country{United States}}
 
 
 \author{Alex Groce}
 \affiliation{\institution{Northern Arizona University}
+  \city{Flagstaff, AZ}
 \country{United States}}
 
 
@@ -294,7 +295,7 @@ in syntax to any language it has been applied to previously.
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
 
-%\keywords{Software Testing, Mutants, Mutation Score, Equivalence}
+\keywords{Software Testing, Mutants, Mutation Generation}
 
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
@@ -317,8 +318,8 @@ has long been a topic of academic interest.  With the recent adoption of mutatio
 testing by bellwether software industry companies including
 Google~\cite{GoogleMut}, Meta~\cite{BellerFacebookMutation}, and
 Amazon~\cite{AmazonMut}, interest in using mutation testing for
-real-world projects has grown widely in practice. 
-%
+real-world projects has grown widely in practice.
+
 Indeed, interest in mutation testing has become widespread enough in the open
 source community that a popular (more than 300 stars on GitHub)
 repository, ``Awesome Mutation Testing,'' lists more than 40 tools,
@@ -1394,7 +1395,7 @@ in our replication package.
 We found only one tool that allowed single-file mutation and worked
 reliably for C++.  Dextool generally produced fewer mutants than
 either mode of our tool, and for some projects produced an extremely
-small number of mutants.  For example, for the {\tt
+small number of mutants.  E.g., for the {\tt
   tiny-differentiable-simulator} project, Dextool only produced a
 total of 61 mutants, and gave a much higher mutation score than our
 two modes.  Our tools produced more than 600 additional unkilled
@@ -1756,11 +1757,19 @@ file included for details.  The package contains Python scripts to run
 our data collection and experiments, as well as full source
 code for our tool.
 
+\section{Acknowledgments}
+
+A portion of this work was funded by the National Science Foundation 
+under NSF awards CCF-2129388, CCF-1910067, and CCF-2129446.  We also 
+thank all contributors to the Universalmutator and Comby projects. 
+
+
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{bibliography}
+
 
 \end{document}
 \endinput
